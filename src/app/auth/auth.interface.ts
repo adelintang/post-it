@@ -1,8 +1,8 @@
 import { type UserRole } from '../../prisma/client'
 
 export interface IRegister {
-	name: string
 	email: string
+	username: string
 	password: string
 	role: UserRole
 }

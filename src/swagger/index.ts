@@ -1,6 +1,6 @@
 import { type OpenAPIV3 } from 'openapi-types'
 
-import { authPath, userPath, productPath, productFilePath } from './path'
+import { authPath, userPath } from './path'
 
 const PORT = process.env.PORT ?? 3000
 const HOST = process.env.HOST ?? 'http://localhost'
@@ -36,7 +36,5 @@ export const swaggerDocument: OpenAPIV3.Document = {
 	paths: {
 		...authPath,
 		...userPath,
-		...productPath,
-		...productFilePath,
 	},
 }

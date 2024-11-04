@@ -6,7 +6,7 @@ export const register = async (user: IRegister) => {
 	return db.user.create({
 		data: {
 			id: `user-${generateUUID()}`,
-			name: user.name,
+			username: user.username,
 			email: user.email,
 			password: user.password,
 			role: user.role,
