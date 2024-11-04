@@ -14,7 +14,7 @@ export interface ILogin {
 
 export interface IRegisterDTO {
 	id: string
-	name: string
 	email: string
+	username: string
 	role: UserRole
 }

@@ -30,8 +30,6 @@ export const swaggerDocument: OpenAPIV3.Document = {
 	tags: [
 		{ name: 'Auth', description: 'Endpoints related to Authentication' },
 		{ name: 'User', description: 'Endpoints related to User' },
-		{ name: 'Product', description: 'Endpoints related to Product' },
-		{ name: 'ProductFile', description: 'Endpoints related to Product Files' },
 	],
 	paths: {
 		...authPath,
