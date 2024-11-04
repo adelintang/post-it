@@ -124,26 +124,24 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   email: 'email',
+  username: 'username',
   password: 'password',
   role: 'role',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
-exports.Prisma.ProductScalarFieldEnum = {
+exports.Prisma.ProfileScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  desc: 'desc',
-  price: 'price',
-  stock: 'stock',
-  user_id: 'user_id',
+  fullname: 'fullname',
+  bio: 'bio',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  user_id: 'user_id'
 };
 
-exports.Prisma.ProductFilesScalarFieldEnum = {
+exports.Prisma.ProfileImageScalarFieldEnum = {
   id: 'id',
   file_url: 'file_url',
   filename: 'filename',
@@ -151,7 +149,52 @@ exports.Prisma.ProductFilesScalarFieldEnum = {
   size: 'size',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  product_id: 'product_id'
+  profile_id: 'profile_id'
+};
+
+exports.Prisma.FollowScalarFieldEnum = {
+  id: 'id',
+  profile_id: 'profile_id',
+  follower_id: 'follower_id',
+  following_id: 'following_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.PostScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  user_id: 'user_id'
+};
+
+exports.Prisma.PostImageScalarFieldEnum = {
+  id: 'id',
+  file_url: 'file_url',
+  filename: 'filename',
+  path: 'path',
+  size: 'size',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  post_id: 'post_id'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  user_id: 'user_id',
+  post_id: 'post_id',
+  parent_id: 'parent_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.LikeScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  post_id: 'post_id',
+  comment_id: 'comment_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -163,15 +206,25 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
 exports.UserRole = exports.$Enums.UserRole = {
-  SELLER: 'SELLER',
-  CONSUMER: 'CONSUMER'
+  ADMIN: 'ADMIN',
+  USER: 'USER'
 };
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Product: 'Product',
-  ProductFiles: 'ProductFiles'
+  Profile: 'Profile',
+  ProfileImage: 'ProfileImage',
+  Follow: 'Follow',
+  Post: 'Post',
+  PostImage: 'PostImage',
+  Comment: 'Comment',
+  Like: 'Like'
 };
 
 /**
