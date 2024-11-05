@@ -2,21 +2,20 @@ export const MESSAGE = {
 	SUCCESS: {
 		CREATED: {
 			USER: 'User registed successfully',
-			PRODUCT: 'Product created successfully',
+			PROFILE: 'Profile created successfully',
 			FILE: 'Product File uploaded successfully',
 		},
 		GET: {
 			USERS: 'Users fetch successfully',
 			USER: 'User fetch successfully',
-			PRODUCTS: 'Products fetch successfully',
-			PRODUCT: 'Product fetch successfully',
+			PROFILES: 'Profiles fetch successfully',
+			PROFILE: 'Profile fetch successfully',
 		},
 		UPDATED: {
-			PRODUCT: 'Product updated successfully',
+			PROFILE: 'Profile updated successfully',
 			FILE: 'Product file updated successfully',
 		},
 		DELETED: {
-			PRODUCT: 'Product deleted successfully',
 			FILE: 'Product file deleted successfully',
 		},
 		LOGIN: 'User login successfully',
@@ -31,7 +30,7 @@ export const MESSAGE = {
 		FORBIDDEN: 'User have not permission',
 		NOT_FOUND: {
 			USER: 'User not found',
-			PRODUCT: 'Product not found',
+			PROFILE: 'Profile not found',
 			FILE: 'Product file not found',
 		},
 		FILE: {
@@ -49,11 +48,11 @@ export const MESSAGE = {
 		INTERNAL_SERVER_ERROR: {
 			CREATED: {
 				USER: 'Create user failed',
-				PRODUCT: 'Create product failed',
+				PROFILE: 'Create profile failed',
 				FILE: 'Create product file failed',
 			},
 			UPDATED: {
-				PRODUCT: 'Update product failed',
+				PROFILE: 'Update profile failed',
 				FILE: 'Update product file failed',
 			},
 			DELETED: {
