@@ -14,6 +14,22 @@ const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET as jwt.Secret
 export const register = async (data: IRegister) => {
 	const hashedPassword = await bcrypt.hash(data.password, 10)
 	const user = { ...data, password: hashedPassword }
+	const emailAlreadyUsed = await authRepository.getUserByEmail(data.email)
+	if (emailAlreadyUsed) {
+		return new AppError(
+			ERROR_CODE.BAD_REQUEST.code,
+			MESSAGE.ERROR.BAD_REQUEST.EMAIL,
+		)
+	}
+	const usernameAlreadyUsed = await authRepository.getUserByUsername(
+		data.username,
+	)
+	if (usernameAlreadyUsed) {
+		return new AppError(
+			ERROR_CODE.BAD_REQUEST.code,
+			MESSAGE.ERROR.BAD_REQUEST.USERNAME,
+		)
+	}
 	const newUser = await authRepository.register(user)
 	if (!newUser) {
 		return new AppError(

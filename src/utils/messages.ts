@@ -28,6 +28,10 @@ export const MESSAGE = {
 			LOGIN_FAILED: 'Email or password wrong',
 		},
 		FORBIDDEN: 'User have not permission',
+		BAD_REQUEST: {
+			EMAIL: 'Email already used',
+			USERNAME: 'Username already used',
+		},
 		NOT_FOUND: {
 			USER: 'User not found',
 			PROFILE: 'Profile not found',
