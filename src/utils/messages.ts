@@ -3,7 +3,7 @@ export const MESSAGE = {
 		CREATED: {
 			USER: 'User registed successfully',
 			PROFILE: 'Profile created successfully',
-			FILE: 'Product File uploaded successfully',
+			PROFILE_IMAGE: 'Profile image uploaded successfully',
 		},
 		GET: {
 			USERS: 'Users fetch successfully',
@@ -13,10 +13,10 @@ export const MESSAGE = {
 		},
 		UPDATED: {
 			PROFILE: 'Profile updated successfully',
-			FILE: 'Product file updated successfully',
+			PROFILE_IMAGE: 'Profile image updated successfully',
 		},
 		DELETED: {
-			FILE: 'Product file deleted successfully',
+			PROFILE_IMAGE: 'Profile image deleted successfully',
 		},
 		LOGIN: 'User login successfully',
 		ACCESS_TOKEN: 'Access token created successfully',
@@ -35,7 +35,7 @@ export const MESSAGE = {
 		NOT_FOUND: {
 			USER: 'User not found',
 			PROFILE: 'Profile not found',
-			FILE: 'Product file not found',
+			PROFILE_IMAGE: 'Profile image not found',
 		},
 		FILE: {
 			NOT_PROVIDED: 'Please upload a file',
@@ -53,15 +53,15 @@ export const MESSAGE = {
 			CREATED: {
 				USER: 'Create user failed',
 				PROFILE: 'Create profile failed',
-				FILE: 'Create product file failed',
+				PROFILE_IMAGE: 'Create profile image failed',
 			},
 			UPDATED: {
 				PROFILE: 'Update profile failed',
-				FILE: 'Update product file failed',
+				PROFILE_IMAGE: 'Update profile image failed',
 			},
 			DELETED: {
 				PRODUCT: 'Delete product failed',
-				FILE: 'Delete product file failed',
+				PROFILE_IMAGE: 'Delete profile image failed',
 			},
 		},
 	},

@@ -91,3 +91,9 @@ export interface RequestFilePayload extends Request {
 }
 
 export const RefreshTokenName = 'refreshToken'
+
+export const DIRECTORY_NAME = {
+	BASE: 'uploads',
+	PROFILE: 'profile',
+	POST: 'post',
+}
