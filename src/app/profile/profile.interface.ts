@@ -1,7 +1,8 @@
-import type { Profile, User } from '../../prisma/client'
+import type { Profile, User, ProfileImage } from '../../prisma/client'
 
 export interface IProfileWithUser extends Profile {
 	user: User
+	profileImage: ProfileImage
 }
 
 export interface ICreateOrUpdateProfileDTO {
@@ -20,8 +21,14 @@ export interface IProfilesDTO {
 	id: string
 	fullname: string
 	user: IUserInProfileDTO
+	profile_image: IProfileImageInProfileDTO
 }
 
 export interface IProfileDTO extends IProfilesDTO {
 	bio: string
+}
+
+export interface IProfileImageInProfileDTO {
+	id: string
+	file_url: string
 }

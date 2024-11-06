@@ -26,6 +26,7 @@ export const getProfilesByUsername = async (query: QueryParams) => {
 		},
 		include: {
 			user: true,
+			profileImage: true,
 		},
 		skip: (Number(page) - 1) * Number(perPage),
 		take: Number(perPage),
@@ -53,6 +54,7 @@ export const getProfile = async (profileId: string) => {
 		},
 		include: {
 			user: true,
+			profileImage: true,
 		},
 	})
 }
