@@ -1525,37 +1525,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type ProfileCountOutputType
-   */
-
-  export type ProfileCountOutputType = {
-    follows: number
-  }
-
-  export type ProfileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    follows?: boolean | ProfileCountOutputTypeCountFollowsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ProfileCountOutputType without action
-   */
-  export type ProfileCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProfileCountOutputType
-     */
-    select?: ProfileCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ProfileCountOutputType without action
-   */
-  export type ProfileCountOutputTypeCountFollowsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FollowWhereInput
-  }
-
-
-  /**
    * Count Type PostCountOutputType
    */
 
@@ -2900,8 +2869,6 @@ export namespace Prisma {
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     profileImage?: boolean | Profile$profileImageArgs<ExtArgs>
-    follows?: boolean | Profile$followsArgs<ExtArgs>
-    _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2926,8 +2893,6 @@ export namespace Prisma {
   export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     profileImage?: boolean | Profile$profileImageArgs<ExtArgs>
-    follows?: boolean | Profile$followsArgs<ExtArgs>
-    _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2938,7 +2903,6 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       profileImage: Prisma.$ProfileImagePayload<ExtArgs> | null
-      follows: Prisma.$FollowPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3313,7 +3277,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     profileImage<T extends Profile$profileImageArgs<ExtArgs> = {}>(args?: Subset<T, Profile$profileImageArgs<ExtArgs>>): Prisma__ProfileImageClient<$Result.GetResult<Prisma.$ProfileImagePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
-    follows<T extends Profile$followsArgs<ExtArgs> = {}>(args?: Subset<T, Profile$followsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3679,26 +3642,6 @@ export namespace Prisma {
      */
     include?: ProfileImageInclude<ExtArgs> | null
     where?: ProfileImageWhereInput
-  }
-
-  /**
-   * Profile.follows
-   */
-  export type Profile$followsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Follow
-     */
-    select?: FollowSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FollowInclude<ExtArgs> | null
-    where?: FollowWhereInput
-    orderBy?: FollowOrderByWithRelationInput | FollowOrderByWithRelationInput[]
-    cursor?: FollowWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FollowScalarFieldEnum | FollowScalarFieldEnum[]
   }
 
   /**
@@ -4891,7 +4834,6 @@ export namespace Prisma {
     following_id?: boolean
     created_at?: boolean
     updated_at?: boolean
-    profile?: boolean | ProfileDefaultArgs<ExtArgs>
     follower?: boolean | UserDefaultArgs<ExtArgs>
     following?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["follow"]>
@@ -4903,7 +4845,6 @@ export namespace Prisma {
     following_id?: boolean
     created_at?: boolean
     updated_at?: boolean
-    profile?: boolean | ProfileDefaultArgs<ExtArgs>
     follower?: boolean | UserDefaultArgs<ExtArgs>
     following?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["follow"]>
@@ -4918,12 +4859,10 @@ export namespace Prisma {
   }
 
   export type FollowInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profile?: boolean | ProfileDefaultArgs<ExtArgs>
     follower?: boolean | UserDefaultArgs<ExtArgs>
     following?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type FollowIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    profile?: boolean | ProfileDefaultArgs<ExtArgs>
     follower?: boolean | UserDefaultArgs<ExtArgs>
     following?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -4931,7 +4870,6 @@ export namespace Prisma {
   export type $FollowPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Follow"
     objects: {
-      profile: Prisma.$ProfilePayload<ExtArgs>
       follower: Prisma.$UserPayload<ExtArgs>
       following: Prisma.$UserPayload<ExtArgs>
     }
@@ -5306,7 +5244,6 @@ export namespace Prisma {
    */
   export interface Prisma__FollowClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    profile<T extends ProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfileDefaultArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     follower<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     following<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
@@ -9985,7 +9922,6 @@ export namespace Prisma {
     user_id?: StringFilter<"Profile"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     profileImage?: XOR<ProfileImageNullableRelationFilter, ProfileImageWhereInput> | null
-    follows?: FollowListRelationFilter
   }
 
   export type ProfileOrderByWithRelationInput = {
@@ -9997,7 +9933,6 @@ export namespace Prisma {
     user_id?: SortOrder
     user?: UserOrderByWithRelationInput
     profileImage?: ProfileImageOrderByWithRelationInput
-    follows?: FollowOrderByRelationAggregateInput
   }
 
   export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -10012,7 +9947,6 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Profile"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     profileImage?: XOR<ProfileImageNullableRelationFilter, ProfileImageWhereInput> | null
-    follows?: FollowListRelationFilter
   }, "id" | "user_id">
 
   export type ProfileOrderByWithAggregationInput = {
@@ -10121,7 +10055,6 @@ export namespace Prisma {
     following_id?: StringFilter<"Follow"> | string
     created_at?: DateTimeFilter<"Follow"> | Date | string
     updated_at?: DateTimeFilter<"Follow"> | Date | string
-    profile?: XOR<ProfileRelationFilter, ProfileWhereInput>
     follower?: XOR<UserRelationFilter, UserWhereInput>
     following?: XOR<UserRelationFilter, UserWhereInput>
   }
@@ -10133,7 +10066,6 @@ export namespace Prisma {
     following_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    profile?: ProfileOrderByWithRelationInput
     follower?: UserOrderByWithRelationInput
     following?: UserOrderByWithRelationInput
   }
@@ -10149,7 +10081,6 @@ export namespace Prisma {
     following_id?: StringFilter<"Follow"> | string
     created_at?: DateTimeFilter<"Follow"> | Date | string
     updated_at?: DateTimeFilter<"Follow"> | Date | string
-    profile?: XOR<ProfileRelationFilter, ProfileWhereInput>
     follower?: XOR<UserRelationFilter, UserWhereInput>
     following?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "follower_id_following_id">
@@ -10550,7 +10481,6 @@ export namespace Prisma {
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutProfileInput
     profileImage?: ProfileImageCreateNestedOneWithoutProfileInput
-    follows?: FollowCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateInput = {
@@ -10561,7 +10491,6 @@ export namespace Prisma {
     updated_at?: Date | string
     user_id: string
     profileImage?: ProfileImageUncheckedCreateNestedOneWithoutProfileInput
-    follows?: FollowUncheckedCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUpdateInput = {
@@ -10572,7 +10501,6 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProfileNestedInput
     profileImage?: ProfileImageUpdateOneWithoutProfileNestedInput
-    follows?: FollowUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateInput = {
@@ -10583,7 +10511,6 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: StringFieldUpdateOperationsInput | string
     profileImage?: ProfileImageUncheckedUpdateOneWithoutProfileNestedInput
-    follows?: FollowUncheckedUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileCreateManyInput = {
@@ -10690,9 +10617,9 @@ export namespace Prisma {
 
   export type FollowCreateInput = {
     id?: string
+    profile_id: string
     created_at?: Date | string
     updated_at?: Date | string
-    profile: ProfileCreateNestedOneWithoutFollowsInput
     follower: UserCreateNestedOneWithoutFollowersInput
     following: UserCreateNestedOneWithoutFollowingsInput
   }
@@ -10708,9 +10635,9 @@ export namespace Prisma {
 
   export type FollowUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    profile?: ProfileUpdateOneRequiredWithoutFollowsNestedInput
     follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
     following?: UserUpdateOneRequiredWithoutFollowingsNestedInput
   }
@@ -10735,6 +10662,7 @@ export namespace Prisma {
 
   export type FollowUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11750,24 +11678,10 @@ export namespace Prisma {
     connect?: ProfileImageWhereUniqueInput
   }
 
-  export type FollowCreateNestedManyWithoutProfileInput = {
-    create?: XOR<FollowCreateWithoutProfileInput, FollowUncheckedCreateWithoutProfileInput> | FollowCreateWithoutProfileInput[] | FollowUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: FollowCreateOrConnectWithoutProfileInput | FollowCreateOrConnectWithoutProfileInput[]
-    createMany?: FollowCreateManyProfileInputEnvelope
-    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-  }
-
   export type ProfileImageUncheckedCreateNestedOneWithoutProfileInput = {
     create?: XOR<ProfileImageCreateWithoutProfileInput, ProfileImageUncheckedCreateWithoutProfileInput>
     connectOrCreate?: ProfileImageCreateOrConnectWithoutProfileInput
     connect?: ProfileImageWhereUniqueInput
-  }
-
-  export type FollowUncheckedCreateNestedManyWithoutProfileInput = {
-    create?: XOR<FollowCreateWithoutProfileInput, FollowUncheckedCreateWithoutProfileInput> | FollowCreateWithoutProfileInput[] | FollowUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: FollowCreateOrConnectWithoutProfileInput | FollowCreateOrConnectWithoutProfileInput[]
-    createMany?: FollowCreateManyProfileInputEnvelope
-    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutProfileNestedInput = {
@@ -11788,20 +11702,6 @@ export namespace Prisma {
     update?: XOR<XOR<ProfileImageUpdateToOneWithWhereWithoutProfileInput, ProfileImageUpdateWithoutProfileInput>, ProfileImageUncheckedUpdateWithoutProfileInput>
   }
 
-  export type FollowUpdateManyWithoutProfileNestedInput = {
-    create?: XOR<FollowCreateWithoutProfileInput, FollowUncheckedCreateWithoutProfileInput> | FollowCreateWithoutProfileInput[] | FollowUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: FollowCreateOrConnectWithoutProfileInput | FollowCreateOrConnectWithoutProfileInput[]
-    upsert?: FollowUpsertWithWhereUniqueWithoutProfileInput | FollowUpsertWithWhereUniqueWithoutProfileInput[]
-    createMany?: FollowCreateManyProfileInputEnvelope
-    set?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    disconnect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    delete?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    update?: FollowUpdateWithWhereUniqueWithoutProfileInput | FollowUpdateWithWhereUniqueWithoutProfileInput[]
-    updateMany?: FollowUpdateManyWithWhereWithoutProfileInput | FollowUpdateManyWithWhereWithoutProfileInput[]
-    deleteMany?: FollowScalarWhereInput | FollowScalarWhereInput[]
-  }
-
   export type ProfileImageUncheckedUpdateOneWithoutProfileNestedInput = {
     create?: XOR<ProfileImageCreateWithoutProfileInput, ProfileImageUncheckedCreateWithoutProfileInput>
     connectOrCreate?: ProfileImageCreateOrConnectWithoutProfileInput
@@ -11810,20 +11710,6 @@ export namespace Prisma {
     delete?: ProfileImageWhereInput | boolean
     connect?: ProfileImageWhereUniqueInput
     update?: XOR<XOR<ProfileImageUpdateToOneWithWhereWithoutProfileInput, ProfileImageUpdateWithoutProfileInput>, ProfileImageUncheckedUpdateWithoutProfileInput>
-  }
-
-  export type FollowUncheckedUpdateManyWithoutProfileNestedInput = {
-    create?: XOR<FollowCreateWithoutProfileInput, FollowUncheckedCreateWithoutProfileInput> | FollowCreateWithoutProfileInput[] | FollowUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: FollowCreateOrConnectWithoutProfileInput | FollowCreateOrConnectWithoutProfileInput[]
-    upsert?: FollowUpsertWithWhereUniqueWithoutProfileInput | FollowUpsertWithWhereUniqueWithoutProfileInput[]
-    createMany?: FollowCreateManyProfileInputEnvelope
-    set?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    disconnect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    delete?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    connect?: FollowWhereUniqueInput | FollowWhereUniqueInput[]
-    update?: FollowUpdateWithWhereUniqueWithoutProfileInput | FollowUpdateWithWhereUniqueWithoutProfileInput[]
-    updateMany?: FollowUpdateManyWithWhereWithoutProfileInput | FollowUpdateManyWithWhereWithoutProfileInput[]
-    deleteMany?: FollowScalarWhereInput | FollowScalarWhereInput[]
   }
 
   export type ProfileCreateNestedOneWithoutProfileImageInput = {
@@ -11848,12 +11734,6 @@ export namespace Prisma {
     update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutProfileImageInput, ProfileUpdateWithoutProfileImageInput>, ProfileUncheckedUpdateWithoutProfileImageInput>
   }
 
-  export type ProfileCreateNestedOneWithoutFollowsInput = {
-    create?: XOR<ProfileCreateWithoutFollowsInput, ProfileUncheckedCreateWithoutFollowsInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutFollowsInput
-    connect?: ProfileWhereUniqueInput
-  }
-
   export type UserCreateNestedOneWithoutFollowersInput = {
     create?: XOR<UserCreateWithoutFollowersInput, UserUncheckedCreateWithoutFollowersInput>
     connectOrCreate?: UserCreateOrConnectWithoutFollowersInput
@@ -11864,14 +11744,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutFollowingsInput, UserUncheckedCreateWithoutFollowingsInput>
     connectOrCreate?: UserCreateOrConnectWithoutFollowingsInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type ProfileUpdateOneRequiredWithoutFollowsNestedInput = {
-    create?: XOR<ProfileCreateWithoutFollowsInput, ProfileUncheckedCreateWithoutFollowsInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutFollowsInput
-    upsert?: ProfileUpsertWithoutFollowsInput
-    connect?: ProfileWhereUniqueInput
-    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutFollowsInput, ProfileUpdateWithoutFollowsInput>, ProfileUncheckedUpdateWithoutFollowsInput>
   }
 
   export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
@@ -12372,7 +12244,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     profileImage?: ProfileImageCreateNestedOneWithoutProfileInput
-    follows?: FollowCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateWithoutUserInput = {
@@ -12382,7 +12253,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     profileImage?: ProfileImageUncheckedCreateNestedOneWithoutProfileInput
-    follows?: FollowUncheckedCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileCreateOrConnectWithoutUserInput = {
@@ -12476,9 +12346,9 @@ export namespace Prisma {
 
   export type FollowCreateWithoutFollowerInput = {
     id?: string
+    profile_id: string
     created_at?: Date | string
     updated_at?: Date | string
-    profile: ProfileCreateNestedOneWithoutFollowsInput
     following: UserCreateNestedOneWithoutFollowingsInput
   }
 
@@ -12502,9 +12372,9 @@ export namespace Prisma {
 
   export type FollowCreateWithoutFollowingInput = {
     id?: string
+    profile_id: string
     created_at?: Date | string
     updated_at?: Date | string
-    profile: ProfileCreateNestedOneWithoutFollowsInput
     follower: UserCreateNestedOneWithoutFollowersInput
   }
 
@@ -12544,7 +12414,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     profileImage?: ProfileImageUpdateOneWithoutProfileNestedInput
-    follows?: FollowUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateWithoutUserInput = {
@@ -12554,7 +12423,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     profileImage?: ProfileImageUncheckedUpdateOneWithoutProfileNestedInput
-    follows?: FollowUncheckedUpdateManyWithoutProfileNestedInput
   }
 
   export type PostUpsertWithWhereUniqueWithoutUserInput = {
@@ -12743,32 +12611,6 @@ export namespace Prisma {
     create: XOR<ProfileImageCreateWithoutProfileInput, ProfileImageUncheckedCreateWithoutProfileInput>
   }
 
-  export type FollowCreateWithoutProfileInput = {
-    id?: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    follower: UserCreateNestedOneWithoutFollowersInput
-    following: UserCreateNestedOneWithoutFollowingsInput
-  }
-
-  export type FollowUncheckedCreateWithoutProfileInput = {
-    id?: string
-    follower_id: string
-    following_id: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type FollowCreateOrConnectWithoutProfileInput = {
-    where: FollowWhereUniqueInput
-    create: XOR<FollowCreateWithoutProfileInput, FollowUncheckedCreateWithoutProfileInput>
-  }
-
-  export type FollowCreateManyProfileInputEnvelope = {
-    data: FollowCreateManyProfileInput | FollowCreateManyProfileInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UserUpsertWithoutProfileInput = {
     update: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
     create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
@@ -12841,22 +12683,6 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FollowUpsertWithWhereUniqueWithoutProfileInput = {
-    where: FollowWhereUniqueInput
-    update: XOR<FollowUpdateWithoutProfileInput, FollowUncheckedUpdateWithoutProfileInput>
-    create: XOR<FollowCreateWithoutProfileInput, FollowUncheckedCreateWithoutProfileInput>
-  }
-
-  export type FollowUpdateWithWhereUniqueWithoutProfileInput = {
-    where: FollowWhereUniqueInput
-    data: XOR<FollowUpdateWithoutProfileInput, FollowUncheckedUpdateWithoutProfileInput>
-  }
-
-  export type FollowUpdateManyWithWhereWithoutProfileInput = {
-    where: FollowScalarWhereInput
-    data: XOR<FollowUpdateManyMutationInput, FollowUncheckedUpdateManyWithoutProfileInput>
-  }
-
   export type ProfileCreateWithoutProfileImageInput = {
     id?: string
     fullname: string
@@ -12864,7 +12690,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutProfileInput
-    follows?: FollowCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateWithoutProfileImageInput = {
@@ -12874,7 +12699,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     user_id: string
-    follows?: FollowUncheckedCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileCreateOrConnectWithoutProfileImageInput = {
@@ -12900,7 +12724,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProfileNestedInput
-    follows?: FollowUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateWithoutProfileImageInput = {
@@ -12910,32 +12733,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: StringFieldUpdateOperationsInput | string
-    follows?: FollowUncheckedUpdateManyWithoutProfileNestedInput
-  }
-
-  export type ProfileCreateWithoutFollowsInput = {
-    id?: string
-    fullname: string
-    bio: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    user: UserCreateNestedOneWithoutProfileInput
-    profileImage?: ProfileImageCreateNestedOneWithoutProfileInput
-  }
-
-  export type ProfileUncheckedCreateWithoutFollowsInput = {
-    id?: string
-    fullname: string
-    bio: string
-    created_at?: Date | string
-    updated_at?: Date | string
-    user_id: string
-    profileImage?: ProfileImageUncheckedCreateNestedOneWithoutProfileInput
-  }
-
-  export type ProfileCreateOrConnectWithoutFollowsInput = {
-    where: ProfileWhereUniqueInput
-    create: XOR<ProfileCreateWithoutFollowsInput, ProfileUncheckedCreateWithoutFollowsInput>
   }
 
   export type UserCreateWithoutFollowersInput = {
@@ -13006,37 +12803,6 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutFollowingsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutFollowingsInput, UserUncheckedCreateWithoutFollowingsInput>
-  }
-
-  export type ProfileUpsertWithoutFollowsInput = {
-    update: XOR<ProfileUpdateWithoutFollowsInput, ProfileUncheckedUpdateWithoutFollowsInput>
-    create: XOR<ProfileCreateWithoutFollowsInput, ProfileUncheckedCreateWithoutFollowsInput>
-    where?: ProfileWhereInput
-  }
-
-  export type ProfileUpdateToOneWithWhereWithoutFollowsInput = {
-    where?: ProfileWhereInput
-    data: XOR<ProfileUpdateWithoutFollowsInput, ProfileUncheckedUpdateWithoutFollowsInput>
-  }
-
-  export type ProfileUpdateWithoutFollowsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    bio?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutProfileNestedInput
-    profileImage?: ProfileImageUpdateOneWithoutProfileNestedInput
-  }
-
-  export type ProfileUncheckedUpdateWithoutFollowsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    bio?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    profileImage?: ProfileImageUncheckedUpdateOneWithoutProfileNestedInput
   }
 
   export type UserUpsertWithoutFollowersInput = {
@@ -13981,9 +13747,9 @@ export namespace Prisma {
 
   export type FollowUpdateWithoutFollowerInput = {
     id?: StringFieldUpdateOperationsInput | string
+    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    profile?: ProfileUpdateOneRequiredWithoutFollowsNestedInput
     following?: UserUpdateOneRequiredWithoutFollowingsNestedInput
   }
 
@@ -14005,9 +13771,9 @@ export namespace Prisma {
 
   export type FollowUpdateWithoutFollowingInput = {
     id?: StringFieldUpdateOperationsInput | string
+    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    profile?: ProfileUpdateOneRequiredWithoutFollowsNestedInput
     follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
   }
 
@@ -14023,38 +13789,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     profile_id?: StringFieldUpdateOperationsInput | string
     follower_id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FollowCreateManyProfileInput = {
-    id?: string
-    follower_id: string
-    following_id: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type FollowUpdateWithoutProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
-    following?: UserUpdateOneRequiredWithoutFollowingsNestedInput
-  }
-
-  export type FollowUncheckedUpdateWithoutProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    follower_id?: StringFieldUpdateOperationsInput | string
-    following_id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FollowUncheckedUpdateManyWithoutProfileInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    follower_id?: StringFieldUpdateOperationsInput | string
-    following_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14196,10 +13930,6 @@ export namespace Prisma {
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ProfileCountOutputTypeDefaultArgs instead
-     */
-    export type ProfileCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProfileCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PostCountOutputTypeDefaultArgs instead
      */
