@@ -1,6 +1,5 @@
 import type { Request, Response, NextFunction } from 'express'
 
-import { type QueryParams } from '../../interface'
 import { AppError } from '../../middleware'
 import { MESSAGE, ResponseHandler } from '../../utils'
 
@@ -18,25 +17,6 @@ export const createProfile = async (
 		return
 	}
 	ResponseHandler.created(res, profile, MESSAGE.SUCCESS.CREATED.PROFILE)
-}
-
-export const getProfiles = async (
-	req: Request & { query: QueryParams },
-	res: Response,
-	next: NextFunction,
-) => {
-	const { query } = req
-	const profiles = await profileService.getProfiles(query)
-	if (profiles instanceof AppError) {
-		next(profiles)
-		return
-	}
-	ResponseHandler.ok(
-		res,
-		profiles?.data,
-		MESSAGE.SUCCESS.GET.PROFILES,
-		profiles?.meta,
-	)
 }
 
 export const getProfile = async (

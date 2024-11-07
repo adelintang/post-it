@@ -3,7 +3,6 @@ import type { User, Profile, ProfileImage } from '../../prisma/client'
 import type {
 	IProfileWithUser,
 	ICreateOrUpdateProfileDTO,
-	IProfilesDTO,
 	IProfileDTO,
 	IUserInProfileDTO,
 	IProfileImageInProfileDTO,
@@ -34,19 +33,6 @@ const profileImageInProfileDTOMapper = (
 		id: profileImage.id,
 		file_url: profileImage.file_url,
 	}
-}
-
-export const profilesDTOMapper = (
-	profiles: IProfileWithUser[],
-): IProfilesDTO[] => {
-	return profiles.map((profile) => {
-		return {
-			id: profile.id,
-			fullname: profile.fullname,
-			user: userInProfileDTOMapper(profile.user),
-			profile_image: profileImageInProfileDTOMapper(profile.profileImage),
-		}
-	})
 }
 
 export const profileDTOMapper = (profile: IProfileWithUser): IProfileDTO => {

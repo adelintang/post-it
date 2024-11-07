@@ -1,4 +1,3 @@
-import { type QueryParams } from '../../interface'
 import { type Profile } from '../../prisma/client'
 import { db, generateUUID } from '../../utils'
 
@@ -9,40 +8,6 @@ export const createProfile = async (profile: Profile) => {
 			fullname: profile.fullname,
 			bio: profile.bio,
 			user_id: profile.user_id,
-		},
-	})
-}
-
-export const getProfilesByUsername = async (query: QueryParams) => {
-	const { search = '', page = '1', perPage = '10' } = query
-	return db.profile.findMany({
-		where: {
-			user: {
-				username: {
-					contains: search.trim(),
-					mode: 'insensitive',
-				},
-			},
-		},
-		include: {
-			user: true,
-			profileImage: true,
-		},
-		skip: (Number(page) - 1) * Number(perPage),
-		take: Number(perPage),
-	})
-}
-
-export const getCountProfilesByUsername = async (query: QueryParams) => {
-	const { search = '' } = query
-	return db.profile.count({
-		where: {
-			user: {
-				username: {
-					contains: search.trim(),
-					mode: 'insensitive',
-				},
-			},
 		},
 	})
 }

@@ -1,14 +1,13 @@
-import { ERROR_CODE, type QueryParams } from '../../interface'
+import { ERROR_CODE } from '../../interface'
 import { AppError } from '../../middleware'
 import { type Profile } from '../../prisma/client'
-import { MESSAGE, metaPagination } from '../../utils'
+import { MESSAGE } from '../../utils'
 import * as userRepository from '../user/user.repository'
 
 import { type IProfileWithUser } from './profile.interface'
 import {
 	createOrUpdateProfileDTOMapper,
 	profileDTOMapper,
-	profilesDTOMapper,
 } from './profile.mapper'
 import * as profileRepository from './profile.repository'
 
@@ -25,21 +24,6 @@ export const createProfile = async (data: Profile) => {
 		)
 	}
 	return createOrUpdateProfileDTOMapper(profile)
-}
-
-export const getProfiles = async (query: QueryParams) => {
-	const { page = '1', perPage = '10' } = query
-	const [profiles, totalData] = await Promise.all([
-		profileRepository.getProfilesByUsername(query),
-		profileRepository.getCountProfilesByUsername(query),
-	])
-	const meta = metaPagination(
-		Number(page),
-		Number(perPage),
-		profiles.length,
-		totalData,
-	)
-	return { data: profilesDTOMapper(profiles), meta }
 }
 
 export const getProfile = async (profileId: string) => {

@@ -14,12 +14,7 @@ import {
 	getProfileImage,
 } from '../profile-image/profile-image.controller'
 
-import {
-	createProfile,
-	getProfiles,
-	getProfile,
-	updateProfile,
-} from './profile.controller'
+import { createProfile, getProfile, updateProfile } from './profile.controller'
 import { createProfileSchema, updateProfileSchema } from './profile.request'
 
 const route = Router()
@@ -48,7 +43,6 @@ route.get('/files/:filename', catchAsync(getProfileImage))
 
 route.post('/', validateRequest(createProfileSchema), catchAsync(createProfile))
 route.get('/:profileId', catchAsync(getProfile))
-route.get('/', catchAsync(getProfiles))
 route.patch(
 	'/:profileId',
 	isOwnerProfile,

@@ -17,7 +17,7 @@ export interface IUserInProfileDTO {
 	username: string
 }
 
-export interface IProfilesDTO {
+interface IProfilesDTO {
 	id: string
 	fullname: string
 	user: IUserInProfileDTO

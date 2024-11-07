@@ -34,3 +34,11 @@ export const getUsersCount = async (query: QueryParams) => {
 		},
 	})
 }
+
+export const getUser = async (userId: string) => {
+	return db.user.findUnique({
+		where: {
+			id: userId,
+		},
+	})
+}
