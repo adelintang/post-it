@@ -52,7 +52,6 @@ model ProfileImage {
 
 model Follow {
   id            String    @id @default(uuid())
-  profile_id    String
   follower_id   String
   following_id  String
   created_at    DateTime  @default(now())
