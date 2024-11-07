@@ -19,17 +19,3 @@ export const getUsers = async (
 	}
 	ResponseHandler.ok(res, users?.data, MESSAGE.SUCCESS.GET.USERS, users?.meta)
 }
-
-export const getUser = async (
-	req: Request,
-	res: Response,
-	next: NextFunction,
-) => {
-	const { userId } = req.params
-	const user = await userService.getUser(userId)
-	if (user instanceof AppError) {
-		next(user)
-		return
-	}
-	ResponseHandler.ok(res, user, MESSAGE.SUCCESS.GET.USER)
-}

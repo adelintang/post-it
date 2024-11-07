@@ -1,18 +1,22 @@
-// import type { User, UserRole } from '../../prisma/client'
-// import {
-// 	type IProductsWithFile,
-// 	type IProductDTO,
-// } from '../product/product.interface'
+import type { Profile, ProfileImage, User } from '../../prisma/client'
 
-// export interface IUserProduct extends User {
-// 	product: IProductsWithFile[]
-// }
+interface IProfileInUser extends Profile {
+	profileImage: ProfileImage
+}
 
-// export interface IUserDTO {
-// 	id: string
-// 	name: string
-// 	email: string
-// 	role: UserRole
-// 	product?: IProductDTO[]
-// 	productCount?: number
-// }
+export interface ISearchUser extends User {
+	profile: IProfileInUser
+}
+
+export interface ISearchUserDTO {
+	id: string
+	username: string
+	profile: {
+		id: string
+		fullname: string
+		profile_image: {
+			id: string
+			file_url: string
+		}
+	}
+}

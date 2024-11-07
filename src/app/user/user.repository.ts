@@ -10,6 +10,13 @@ export const getUsers = async (query: QueryParams) => {
 				mode: 'insensitive',
 			},
 		},
+		include: {
+			profile: {
+				include: {
+					profileImage: true,
+				},
+			},
+		},
 		skip: (Number(page) - 1) * Number(perPage),
 		take: Number(perPage),
 	})
@@ -24,14 +31,6 @@ export const getUsersCount = async (query: QueryParams) => {
 				contains: search.trim(),
 				mode: 'insensitive',
 			},
-		},
-	})
-}
-
-export const getUser = async (userId: string) => {
-	return db.user.findUnique({
-		where: {
-			id: userId,
 		},
 	})
 }

@@ -1,9 +1,8 @@
-import { ERROR_CODE, type QueryParams } from '../../interface'
-import { AppError } from '../../middleware'
-import { MESSAGE, metaPagination } from '../../utils'
+import { type QueryParams } from '../../interface'
+import { metaPagination } from '../../utils'
 
-// import { type IUserProduct } from './user.interface'
-// import { usersDTOMapper, userWithProductDTOMapper } from './user.mapper'
+import type { ISearchUser } from './user.interface'
+import { searchUsersDTOMapper } from './user.mapper'
 import * as userRepository from './user.repository'
 
 export const getUsers = async (query: QueryParams) => {
@@ -18,13 +17,5 @@ export const getUsers = async (query: QueryParams) => {
 		users.length,
 		totalData,
 	)
-	return { data: users, meta }
-}
-
-export const getUser = async (userId: string) => {
-	const user = await userRepository.getUser(userId)
-	if (!user) {
-		return new AppError(ERROR_CODE.NOT_FOUND.code, MESSAGE.ERROR.NOT_FOUND.USER)
-	}
-	return user
+	return { data: searchUsersDTOMapper(users as ISearchUser[]), meta }
 }

@@ -8,8 +8,6 @@ export const MESSAGE = {
 		},
 		GET: {
 			USERS: 'Users fetch successfully',
-			USER: 'User fetch successfully',
-			PROFILES: 'Profiles fetch successfully',
 			PROFILE: 'Profile fetch successfully',
 			FOLLOWERS: 'Followers fetched successfully',
 			FOLLOWINGS: 'Followings fetched successfully',
