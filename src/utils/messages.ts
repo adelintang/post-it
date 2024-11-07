@@ -4,12 +4,16 @@ export const MESSAGE = {
 			USER: 'User registed successfully',
 			PROFILE: 'Profile created successfully',
 			PROFILE_IMAGE: 'Profile image uploaded successfully',
+			FOLLOW: 'Following user successfully',
 		},
 		GET: {
 			USERS: 'Users fetch successfully',
 			USER: 'User fetch successfully',
 			PROFILES: 'Profiles fetch successfully',
 			PROFILE: 'Profile fetch successfully',
+			FOLLOWERS: 'Followers fetched successfully',
+			FOLLOWINGS: 'Followings fetched successfully',
+			FOLLOWS_COUNT: 'Follower and following count fetched successfully',
 		},
 		UPDATED: {
 			PROFILE: 'Profile updated successfully',
@@ -17,6 +21,7 @@ export const MESSAGE = {
 		},
 		DELETED: {
 			PROFILE_IMAGE: 'Profile image deleted successfully',
+			UNFOLLOW: 'Unfollow user successfully',
 		},
 		LOGIN: 'User login successfully',
 		ACCESS_TOKEN: 'Access token created successfully',
@@ -36,6 +41,7 @@ export const MESSAGE = {
 			USER: 'User not found',
 			PROFILE: 'Profile not found',
 			PROFILE_IMAGE: 'Profile image not found',
+			FOLLOW: 'Follow not found',
 		},
 		FILE: {
 			NOT_PROVIDED: 'Please upload a file',
@@ -54,6 +60,7 @@ export const MESSAGE = {
 				USER: 'Create user failed',
 				PROFILE: 'Create profile failed',
 				PROFILE_IMAGE: 'Create profile image failed',
+				FOLLOW: 'Following user failed',
 			},
 			UPDATED: {
 				PROFILE: 'Update profile failed',
@@ -62,6 +69,7 @@ export const MESSAGE = {
 			DELETED: {
 				PRODUCT: 'Delete product failed',
 				PROFILE_IMAGE: 'Delete profile image failed',
+				UNFOLLOW: 'Unfollow user failed',
 			},
 		},
 	},
