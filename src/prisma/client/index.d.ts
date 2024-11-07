@@ -4674,7 +4674,6 @@ export namespace Prisma {
 
   export type FollowMinAggregateOutputType = {
     id: string | null
-    profile_id: string | null
     follower_id: string | null
     following_id: string | null
     created_at: Date | null
@@ -4683,7 +4682,6 @@ export namespace Prisma {
 
   export type FollowMaxAggregateOutputType = {
     id: string | null
-    profile_id: string | null
     follower_id: string | null
     following_id: string | null
     created_at: Date | null
@@ -4692,7 +4690,6 @@ export namespace Prisma {
 
   export type FollowCountAggregateOutputType = {
     id: number
-    profile_id: number
     follower_id: number
     following_id: number
     created_at: number
@@ -4703,7 +4700,6 @@ export namespace Prisma {
 
   export type FollowMinAggregateInputType = {
     id?: true
-    profile_id?: true
     follower_id?: true
     following_id?: true
     created_at?: true
@@ -4712,7 +4708,6 @@ export namespace Prisma {
 
   export type FollowMaxAggregateInputType = {
     id?: true
-    profile_id?: true
     follower_id?: true
     following_id?: true
     created_at?: true
@@ -4721,7 +4716,6 @@ export namespace Prisma {
 
   export type FollowCountAggregateInputType = {
     id?: true
-    profile_id?: true
     follower_id?: true
     following_id?: true
     created_at?: true
@@ -4803,7 +4797,6 @@ export namespace Prisma {
 
   export type FollowGroupByOutputType = {
     id: string
-    profile_id: string
     follower_id: string
     following_id: string
     created_at: Date
@@ -4829,7 +4822,6 @@ export namespace Prisma {
 
   export type FollowSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    profile_id?: boolean
     follower_id?: boolean
     following_id?: boolean
     created_at?: boolean
@@ -4840,7 +4832,6 @@ export namespace Prisma {
 
   export type FollowSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    profile_id?: boolean
     follower_id?: boolean
     following_id?: boolean
     created_at?: boolean
@@ -4851,7 +4842,6 @@ export namespace Prisma {
 
   export type FollowSelectScalar = {
     id?: boolean
-    profile_id?: boolean
     follower_id?: boolean
     following_id?: boolean
     created_at?: boolean
@@ -4875,7 +4865,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      profile_id: string
       follower_id: string
       following_id: string
       created_at: Date
@@ -5276,7 +5265,6 @@ export namespace Prisma {
    */ 
   interface FollowFieldRefs {
     readonly id: FieldRef<"Follow", 'String'>
-    readonly profile_id: FieldRef<"Follow", 'String'>
     readonly follower_id: FieldRef<"Follow", 'String'>
     readonly following_id: FieldRef<"Follow", 'String'>
     readonly created_at: FieldRef<"Follow", 'DateTime'>
@@ -9670,7 +9658,6 @@ export namespace Prisma {
 
   export const FollowScalarFieldEnum: {
     id: 'id',
-    profile_id: 'profile_id',
     follower_id: 'follower_id',
     following_id: 'following_id',
     created_at: 'created_at',
@@ -10050,7 +10037,6 @@ export namespace Prisma {
     OR?: FollowWhereInput[]
     NOT?: FollowWhereInput | FollowWhereInput[]
     id?: StringFilter<"Follow"> | string
-    profile_id?: StringFilter<"Follow"> | string
     follower_id?: StringFilter<"Follow"> | string
     following_id?: StringFilter<"Follow"> | string
     created_at?: DateTimeFilter<"Follow"> | Date | string
@@ -10061,7 +10047,6 @@ export namespace Prisma {
 
   export type FollowOrderByWithRelationInput = {
     id?: SortOrder
-    profile_id?: SortOrder
     follower_id?: SortOrder
     following_id?: SortOrder
     created_at?: SortOrder
@@ -10076,7 +10061,6 @@ export namespace Prisma {
     AND?: FollowWhereInput | FollowWhereInput[]
     OR?: FollowWhereInput[]
     NOT?: FollowWhereInput | FollowWhereInput[]
-    profile_id?: StringFilter<"Follow"> | string
     follower_id?: StringFilter<"Follow"> | string
     following_id?: StringFilter<"Follow"> | string
     created_at?: DateTimeFilter<"Follow"> | Date | string
@@ -10087,7 +10071,6 @@ export namespace Prisma {
 
   export type FollowOrderByWithAggregationInput = {
     id?: SortOrder
-    profile_id?: SortOrder
     follower_id?: SortOrder
     following_id?: SortOrder
     created_at?: SortOrder
@@ -10102,7 +10085,6 @@ export namespace Prisma {
     OR?: FollowScalarWhereWithAggregatesInput[]
     NOT?: FollowScalarWhereWithAggregatesInput | FollowScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Follow"> | string
-    profile_id?: StringWithAggregatesFilter<"Follow"> | string
     follower_id?: StringWithAggregatesFilter<"Follow"> | string
     following_id?: StringWithAggregatesFilter<"Follow"> | string
     created_at?: DateTimeWithAggregatesFilter<"Follow"> | Date | string
@@ -10617,7 +10599,6 @@ export namespace Prisma {
 
   export type FollowCreateInput = {
     id?: string
-    profile_id: string
     created_at?: Date | string
     updated_at?: Date | string
     follower: UserCreateNestedOneWithoutFollowersInput
@@ -10626,7 +10607,6 @@ export namespace Prisma {
 
   export type FollowUncheckedCreateInput = {
     id?: string
-    profile_id: string
     follower_id: string
     following_id: string
     created_at?: Date | string
@@ -10635,7 +10615,6 @@ export namespace Prisma {
 
   export type FollowUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
@@ -10644,7 +10623,6 @@ export namespace Prisma {
 
   export type FollowUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     follower_id?: StringFieldUpdateOperationsInput | string
     following_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10653,7 +10631,6 @@ export namespace Prisma {
 
   export type FollowCreateManyInput = {
     id?: string
-    profile_id: string
     follower_id: string
     following_id: string
     created_at?: Date | string
@@ -10662,14 +10639,12 @@ export namespace Prisma {
 
   export type FollowUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FollowUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     follower_id?: StringFieldUpdateOperationsInput | string
     following_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11207,7 +11182,6 @@ export namespace Prisma {
 
   export type FollowCountOrderByAggregateInput = {
     id?: SortOrder
-    profile_id?: SortOrder
     follower_id?: SortOrder
     following_id?: SortOrder
     created_at?: SortOrder
@@ -11216,7 +11190,6 @@ export namespace Prisma {
 
   export type FollowMaxOrderByAggregateInput = {
     id?: SortOrder
-    profile_id?: SortOrder
     follower_id?: SortOrder
     following_id?: SortOrder
     created_at?: SortOrder
@@ -11225,7 +11198,6 @@ export namespace Prisma {
 
   export type FollowMinOrderByAggregateInput = {
     id?: SortOrder
-    profile_id?: SortOrder
     follower_id?: SortOrder
     following_id?: SortOrder
     created_at?: SortOrder
@@ -12346,7 +12318,6 @@ export namespace Prisma {
 
   export type FollowCreateWithoutFollowerInput = {
     id?: string
-    profile_id: string
     created_at?: Date | string
     updated_at?: Date | string
     following: UserCreateNestedOneWithoutFollowingsInput
@@ -12354,7 +12325,6 @@ export namespace Prisma {
 
   export type FollowUncheckedCreateWithoutFollowerInput = {
     id?: string
-    profile_id: string
     following_id: string
     created_at?: Date | string
     updated_at?: Date | string
@@ -12372,7 +12342,6 @@ export namespace Prisma {
 
   export type FollowCreateWithoutFollowingInput = {
     id?: string
-    profile_id: string
     created_at?: Date | string
     updated_at?: Date | string
     follower: UserCreateNestedOneWithoutFollowersInput
@@ -12380,7 +12349,6 @@ export namespace Prisma {
 
   export type FollowUncheckedCreateWithoutFollowingInput = {
     id?: string
-    profile_id: string
     follower_id: string
     created_at?: Date | string
     updated_at?: Date | string
@@ -12528,7 +12496,6 @@ export namespace Prisma {
     OR?: FollowScalarWhereInput[]
     NOT?: FollowScalarWhereInput | FollowScalarWhereInput[]
     id?: StringFilter<"Follow"> | string
-    profile_id?: StringFilter<"Follow"> | string
     follower_id?: StringFilter<"Follow"> | string
     following_id?: StringFilter<"Follow"> | string
     created_at?: DateTimeFilter<"Follow"> | Date | string
@@ -13655,7 +13622,6 @@ export namespace Prisma {
 
   export type FollowCreateManyFollowerInput = {
     id?: string
-    profile_id: string
     following_id: string
     created_at?: Date | string
     updated_at?: Date | string
@@ -13663,7 +13629,6 @@ export namespace Prisma {
 
   export type FollowCreateManyFollowingInput = {
     id?: string
-    profile_id: string
     follower_id: string
     created_at?: Date | string
     updated_at?: Date | string
@@ -13747,7 +13712,6 @@ export namespace Prisma {
 
   export type FollowUpdateWithoutFollowerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     following?: UserUpdateOneRequiredWithoutFollowingsNestedInput
@@ -13755,7 +13719,6 @@ export namespace Prisma {
 
   export type FollowUncheckedUpdateWithoutFollowerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     following_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13763,7 +13726,6 @@ export namespace Prisma {
 
   export type FollowUncheckedUpdateManyWithoutFollowerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     following_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13771,7 +13733,6 @@ export namespace Prisma {
 
   export type FollowUpdateWithoutFollowingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     follower?: UserUpdateOneRequiredWithoutFollowersNestedInput
@@ -13779,7 +13740,6 @@ export namespace Prisma {
 
   export type FollowUncheckedUpdateWithoutFollowingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     follower_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13787,7 +13747,6 @@ export namespace Prisma {
 
   export type FollowUncheckedUpdateManyWithoutFollowingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    profile_id?: StringFieldUpdateOperationsInput | string
     follower_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -154,7 +154,6 @@ exports.Prisma.ProfileImageScalarFieldEnum = {
 
 exports.Prisma.FollowScalarFieldEnum = {
   id: 'id',
-  profile_id: 'profile_id',
   follower_id: 'follower_id',
   following_id: 'following_id',
   created_at: 'created_at',
