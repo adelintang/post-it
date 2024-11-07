@@ -1,4 +1,11 @@
-import type { ISearchUser, ISearchUserDTO } from './user.interface'
+import type { User } from '../../prisma/client'
+import { profileWithProfileImageDTOMapper } from '../profile/profile.mapper'
+
+import type {
+	ISearchUser,
+	ISearchUserDTO,
+	IUserInProfileDTO,
+} from './user.interface'
 
 export const searchUsersDTOMapper = (
 	users: ISearchUser[],
@@ -10,13 +17,13 @@ export const searchUserDTOMapper = (user: ISearchUser): ISearchUserDTO => {
 	return {
 		id: user.id,
 		username: user.username,
-		profile: {
-			id: user.profile.id,
-			fullname: user.profile.fullname,
-			profile_image: {
-				id: user.profile.profileImage.id,
-				file_url: user.profile.profileImage.file_url,
-			},
-		},
+		profile: profileWithProfileImageDTOMapper(user.profile),
+	}
+}
+
+export const userInProfileDTOMapper = (user: User): IUserInProfileDTO => {
+	return {
+		id: user.id,
+		username: user.username,
 	}
 }

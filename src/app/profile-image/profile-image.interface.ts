@@ -21,3 +21,8 @@ export interface IDeleteProfileImageDTO {
 	id: string
 	profile_id: string
 }
+
+export interface IProfileImageInProfileDTO {
+	id: string
+	file_url: string
+}

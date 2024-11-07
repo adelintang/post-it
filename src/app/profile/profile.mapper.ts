@@ -1,11 +1,13 @@
-import type { User, Profile, ProfileImage } from '../../prisma/client'
+import type { Profile } from '../../prisma/client'
+import { profileImageInProfileDTOMapper } from '../profile-image/profile-image.mapper'
+import { userInProfileDTOMapper } from '../user/user.mapper'
 
 import type {
 	IProfileWithUser,
 	ICreateOrUpdateProfileDTO,
 	IProfileDTO,
-	IUserInProfileDTO,
-	IProfileImageInProfileDTO,
+	IProfileWithProfileImageDTO,
+	IProfileWithProfileImage,
 } from './profile.interface'
 
 export const createOrUpdateProfileDTOMapper = (
@@ -19,28 +21,22 @@ export const createOrUpdateProfileDTOMapper = (
 	}
 }
 
-const userInProfileDTOMapper = (user: User): IUserInProfileDTO => {
-	return {
-		id: user.id,
-		username: user.username,
-	}
-}
-
-const profileImageInProfileDTOMapper = (
-	profileImage: ProfileImage,
-): IProfileImageInProfileDTO => {
-	return {
-		id: profileImage.id,
-		file_url: profileImage.file_url,
-	}
-}
-
 export const profileDTOMapper = (profile: IProfileWithUser): IProfileDTO => {
 	return {
 		id: profile.id,
 		fullname: profile.fullname,
 		bio: profile.bio,
 		user: userInProfileDTOMapper(profile.user),
+		profile_image: profileImageInProfileDTOMapper(profile.profileImage),
+	}
+}
+
+export const profileWithProfileImageDTOMapper = (
+	profile: IProfileWithProfileImage,
+): IProfileWithProfileImageDTO => {
+	return {
+		id: profile.id,
+		fullname: profile.fullname,
 		profile_image: profileImageInProfileDTOMapper(profile.profileImage),
 	}
 }

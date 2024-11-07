@@ -3,6 +3,7 @@ import { type ProfileImage } from '../../prisma/client'
 import type {
 	IProfileImageDTO,
 	IDeleteProfileImageDTO,
+	IProfileImageInProfileDTO,
 } from './profile-image.interface'
 
 export const profileImageDTOMapper = (
@@ -23,5 +24,14 @@ export const deleteProfileImageDTOMapper = (
 	return {
 		id: profileImage.id,
 		profile_id: profileImage.profile_id,
+	}
+}
+
+export const profileImageInProfileDTOMapper = (
+	profileImage: ProfileImage,
+): IProfileImageInProfileDTO => {
+	return {
+		id: profileImage.id,
+		file_url: profileImage.file_url,
 	}
 }
