@@ -1,29 +1,11 @@
-import type { User, Profile, Follow, ProfileImage } from '../../prisma/client'
-
-interface IProfileInUser extends Profile {
-	profileImage: ProfileImage
-}
-
-interface IUserInFollow extends User {
-	profile: IProfileInUser
-}
+import type { Follow } from '../../prisma/client'
+import type { ISearchUser, ISearchUserDTO } from '../user/user.interface'
 
 export interface IFollow extends Follow {
-	follower: IUserInFollow
-	following: IUserInFollow
+	follower: ISearchUser
+	following: ISearchUser
 }
 
-export interface IFollowerDTO {
-	id: string
-	username: string
-	profile: {
-		id: string
-		fullname: string
-		profile_image: {
-			id: string
-			file_url: string
-		}
-	}
-}
+export interface IFollowerDTO extends ISearchUserDTO {}
 
-export interface IFollowingDTO extends IFollowerDTO {}
+export interface IFollowingDTO extends ISearchUserDTO {}
