@@ -31,6 +31,7 @@ export const getPosts = async (query: QueryParams) => {
 					},
 				},
 			},
+			postImage: true,
 		},
 		skip: (Number(page) - 1) * Number(perPage),
 		take: Number(perPage),
@@ -64,6 +65,7 @@ export const getPost = async (postId: string) => {
 					},
 				},
 			},
+			postImage: true,
 		},
 	})
 }

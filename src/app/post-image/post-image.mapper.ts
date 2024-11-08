@@ -1,6 +1,10 @@
 import type { PostImage } from '../../prisma/client'
 
-import type { IDeletePostImageDTO, IPostImageDTO } from './post-image.interface'
+import type {
+	IDeletePostImageDTO,
+	IPostImageDTO,
+	IPostImageInPostDTO,
+} from './post-image.interface'
 
 export const postImageDTOMapper = (postImage: PostImage): IPostImageDTO => {
 	return {
@@ -18,5 +22,14 @@ export const deletePostImageDTOMapper = (
 	return {
 		id: postImage.id,
 		post_id: postImage.post_id,
+	}
+}
+
+export const postImageInPostDTOMapper = (
+	postImage: PostImage,
+): IPostImageInPostDTO => {
+	return {
+		id: postImage.id,
+		file_url: postImage.file_url,
 	}
 }

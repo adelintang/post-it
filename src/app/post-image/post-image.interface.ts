@@ -1,4 +1,7 @@
-import type { IUpdateProfileImage } from '../profile-image/profile-image.interface'
+import type {
+	IProfileImageInProfileDTO,
+	IUpdateProfileImage,
+} from '../profile-image/profile-image.interface'
 
 export interface IUpdatePostImage extends IUpdateProfileImage {}
 export interface ICreatePostImage extends IUpdateProfileImage {
@@ -17,3 +20,5 @@ export interface IDeletePostImageDTO {
 	id: string
 	post_id: string
 }
+
+export interface IPostImageInPostDTO extends IProfileImageInProfileDTO {}
