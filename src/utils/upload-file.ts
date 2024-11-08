@@ -1,3 +1,4 @@
+import fs from 'fs/promises'
 import path from 'path'
 
 import type { Request } from 'express'
@@ -64,4 +65,13 @@ export const uploadConfig = (storage: multer.StorageEngine) => {
 		},
 	})
 	return config
+}
+
+export const deleteFile = async (path: string) => {
+	try {
+		await fs.unlink(path)
+		console.log(`File ${path} deleted.`)
+	} catch (err: any) {
+		return new AppError(ERROR_CODE.INTERNAL_SERVER_ERROR.code, err.message)
+	}
 }

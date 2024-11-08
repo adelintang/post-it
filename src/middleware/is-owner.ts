@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
 
+import * as postImageRepository from '../app/post-image/post-image.repository'
 import * as postRepository from '../app/post/post.repository'
 import * as profileImageRepository from '../app/profile-image/profile-image.repository'
 import * as profileRepository from '../app/profile/profile.repository'
@@ -60,6 +61,31 @@ export const isOwnerPost = async (
 	const { postId } = req.params
 	const { tokenPayload } = req as unknown as RequestWithAuthPayload
 	const post = await postRepository.getPost(postId)
+	if (!post) {
+		ResponseHandler.notFound(next, MESSAGE.ERROR.NOT_FOUND.POST)
+		return
+	}
+	const verify = post.user_id === tokenPayload.userId
+	if (!verify) {
+		ResponseHandler.forbidden(next, MESSAGE.ERROR.FORBIDDEN)
+		return
+	}
+	next()
+}
+
+export const isOwnerPostImage = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const { postImageId } = req.params
+	const { tokenPayload } = req as unknown as RequestWithAuthPayload
+	const postImage = await postImageRepository.getPostImage(postImageId)
+	if (!postImage) {
+		ResponseHandler.notFound(next, MESSAGE.ERROR.NOT_FOUND.POST_IMAGE)
+		return
+	}
+	const post = await postRepository.getPost(postImage.post_id)
 	if (!post) {
 		ResponseHandler.notFound(next, MESSAGE.ERROR.NOT_FOUND.POST)
 		return

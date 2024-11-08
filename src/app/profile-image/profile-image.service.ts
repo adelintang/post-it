@@ -1,8 +1,6 @@
-import fs from 'fs/promises'
-
 import { ERROR_CODE } from '../../interface'
 import { AppError } from '../../middleware'
-import { MESSAGE } from '../../utils'
+import { deleteFile, MESSAGE } from '../../utils'
 import * as profileRepository from '../profile/profile.repository'
 
 import type {
@@ -102,13 +100,4 @@ export const deleteProfileImage = async (profileImageId: string) => {
 	}
 	await deleteFile(profileImage.path)
 	return deleteProfileImageDTOMapper(profileImageDeleted)
-}
-
-const deleteFile = async (path: string) => {
-	try {
-		await fs.unlink(path)
-		console.log(`File ${path} deleted.`)
-	} catch (err: any) {
-		return new AppError(ERROR_CODE.INTERNAL_SERVER_ERROR.code, err.message)
-	}
 }
