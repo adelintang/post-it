@@ -5,6 +5,7 @@ export const MESSAGE = {
 			PROFILE: 'Profile created successfully',
 			PROFILE_IMAGE: 'Profile image uploaded successfully',
 			FOLLOW: 'Following user successfully',
+			POST: 'Post created successfully',
 		},
 		GET: {
 			USERS: 'Users fetch successfully',
@@ -12,14 +13,18 @@ export const MESSAGE = {
 			FOLLOWERS: 'Followers fetched successfully',
 			FOLLOWINGS: 'Followings fetched successfully',
 			FOLLOWS_COUNT: 'Follower and following count fetched successfully',
+			POSTS: 'Posts fetch successfully',
+			POST: 'Post fetch successfully',
 		},
 		UPDATED: {
 			PROFILE: 'Profile updated successfully',
 			PROFILE_IMAGE: 'Profile image updated successfully',
+			POST: 'Post updated successfully',
 		},
 		DELETED: {
 			PROFILE_IMAGE: 'Profile image deleted successfully',
 			UNFOLLOW: 'Unfollow user successfully',
+			POST: 'Post deleted successfully',
 		},
 		LOGIN: 'User login successfully',
 		ACCESS_TOKEN: 'Access token created successfully',
@@ -40,6 +45,7 @@ export const MESSAGE = {
 			PROFILE: 'Profile not found',
 			PROFILE_IMAGE: 'Profile image not found',
 			FOLLOW: 'Follow not found',
+			POST: 'Post not found',
 		},
 		FILE: {
 			NOT_PROVIDED: 'Please upload a file',
@@ -59,15 +65,18 @@ export const MESSAGE = {
 				PROFILE: 'Create profile failed',
 				PROFILE_IMAGE: 'Create profile image failed',
 				FOLLOW: 'Following user failed',
+				POST: 'Create post failed',
 			},
 			UPDATED: {
 				PROFILE: 'Update profile failed',
 				PROFILE_IMAGE: 'Update profile image failed',
+				POST: 'Update post failed',
 			},
 			DELETED: {
 				PRODUCT: 'Delete product failed',
 				PROFILE_IMAGE: 'Delete profile image failed',
 				UNFOLLOW: 'Unfollow user failed',
+				POST: 'Delete post failed',
 			},
 		},
 	},

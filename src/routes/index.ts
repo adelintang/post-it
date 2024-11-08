@@ -1,6 +1,7 @@
 import { type NextFunction, Router, type Request, type Response } from 'express'
 
 import authRoute from '../app/auth/auth.route'
+import postRoute from '../app/post/post.route'
 import profileRoute from '../app/profile/profile.route'
 import userRoute from '../app/user/user.route'
 import { ERROR_CODE } from '../interface'
@@ -12,6 +13,7 @@ const route = Router()
 route.use('/auth', authRoute)
 route.use('/users', authentication, userRoute)
 route.use('/profiles', authentication, profileRoute)
+route.use('/posts', authentication, postRoute)
 
 route.get('/', (req: Request, res: Response) => {
 	ResponseHandler.ok(res, null, 'Welcome to Template Api')

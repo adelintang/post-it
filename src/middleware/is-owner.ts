@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
 
+import * as postRepository from '../app/post/post.repository'
 import * as profileImageRepository from '../app/profile-image/profile-image.repository'
 import * as profileRepository from '../app/profile/profile.repository'
 import { type RequestWithAuthPayload } from '../interface'
@@ -44,6 +45,26 @@ export const isOwnerProfileImage = async (
 		return
 	}
 	const verify = profile.user_id === tokenPayload.userId
+	if (!verify) {
+		ResponseHandler.forbidden(next, MESSAGE.ERROR.FORBIDDEN)
+		return
+	}
+	next()
+}
+
+export const isOwnerPost = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const { postId } = req.params
+	const { tokenPayload } = req as unknown as RequestWithAuthPayload
+	const post = await postRepository.getPost(postId)
+	if (!post) {
+		ResponseHandler.notFound(next, MESSAGE.ERROR.NOT_FOUND.POST)
+		return
+	}
+	const verify = post.user_id === tokenPayload.userId
 	if (!verify) {
 		ResponseHandler.forbidden(next, MESSAGE.ERROR.FORBIDDEN)
 		return
