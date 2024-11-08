@@ -70,15 +70,13 @@ The mini social media including simple feature implemented like authentication, 
 
 - `Comment`
 
-  - POST `/posts/:postId/comments` : Create Comment
+  - POST `/posts/comments` : Create Comment
   - GET `/posts/:postId/comments` : Get All Comment
-  - PATCH `/posts/:postId/comments/:commentId` : Update Comment
-  - DELETE `/posts/:postId/comments/:commentId` : Delete Comment
+  - PATCH `/comments/:commentId` : Update Comment or Reply
+  - DELETE `/comments/:commentId` : Delete Comment or Reply
   
-  - POST `/comments/:commentId/reply` : Create Reply
-  - GET `/comments/:commentId/reply` : Get All Reply
-  - PATCH `/comments/:commentId/reply/:replyId` : Update Reply
-  - DELETE `/comments/:commentId/reply/:replyId` : Delete Reply
+  - POST `/comments/replies` : Create Reply
+  - GET `/comments/:commentId/replies` : Get All Reply
 
 - `Like`
 
