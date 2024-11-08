@@ -75,6 +75,12 @@ The mini social media including simple feature implemented like authentication, 
 
 - `Like`
 
+  - POST `/posts/:postId/like` : Like Post
+  - DELETE `/posts/:postId/unlike` : Unlike Post
+  - GET `/posts/:postId/likes/count` : likes post count
+  - POST `/comments/:commentId/like` : Like Comment
+  - DELETE `/comments/:commentId/unlike` : Unlike Comment
+  - GET `/comments/:commentId/likes/count` : likes comment count
 
 
 
