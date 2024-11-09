@@ -15,6 +15,7 @@ export const commentsDTOMapper = (comments: IComment[]): ICommentDTO[] => {
 			created_at: comment.created_at,
 			updated_at: comment.updated_at,
 			user: searchUserDTOMapper(comment.user),
+			repliesCount: comment._count.comments,
 		}
 	})
 }

@@ -32,6 +32,11 @@ export const getComments = async (postId: string, query: QueryParams) => {
 					},
 				},
 			},
+			_count: {
+				select: {
+					comments: true,
+				},
+			},
 		},
 		skip: (Number(page) - 1) * Number(perPage),
 		take: Number(perPage),
