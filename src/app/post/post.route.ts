@@ -7,6 +7,8 @@ import {
 	validateRequest,
 } from '../../middleware'
 import { catchAsync, storageConfig, uploadConfig } from '../../utils'
+import { createComment, getComments } from '../comment/comment.controller'
+import { createCommentSchema } from '../comment/comment.request'
 import {
 	createPostImage,
 	updatePostImage,
@@ -46,6 +48,13 @@ route.delete(
 	catchAsync(deletePostImage),
 )
 route.get('/files/:filename', catchAsync(getPostImage))
+
+route.get('/:postId/comments', catchAsync(getComments))
+route.post(
+	'/comments',
+	validateRequest(createCommentSchema),
+	catchAsync(createComment),
+)
 
 route.get('/:postId', catchAsync(getPost))
 route.patch(

@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
 
+import * as commentRepository from '../app/comment/comment.repository'
 import * as postImageRepository from '../app/post-image/post-image.repository'
 import * as postRepository from '../app/post/post.repository'
 import * as profileImageRepository from '../app/profile-image/profile-image.repository'
@@ -91,6 +92,26 @@ export const isOwnerPostImage = async (
 		return
 	}
 	const verify = post.user_id === tokenPayload.userId
+	if (!verify) {
+		ResponseHandler.forbidden(next, MESSAGE.ERROR.FORBIDDEN)
+		return
+	}
+	next()
+}
+
+export const isOwnerComment = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const { commentId } = req.params
+	const { tokenPayload } = req as unknown as RequestWithAuthPayload
+	const comment = await commentRepository.getComment(commentId)
+	if (!comment) {
+		ResponseHandler.notFound(next, MESSAGE.ERROR.NOT_FOUND.COMMENT)
+		return
+	}
+	const verify = comment.user_id === tokenPayload.userId
 	if (!verify) {
 		ResponseHandler.forbidden(next, MESSAGE.ERROR.FORBIDDEN)
 		return
