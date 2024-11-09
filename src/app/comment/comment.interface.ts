@@ -18,7 +18,7 @@ export interface ICommentDTO {
 	created_at: Date
 	updated_at: Date
 	user: ISearchUserDTO
-	repliesCount: number
+	repliesCount?: number
 }
 
 export interface IReplyDTO {

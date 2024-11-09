@@ -8,6 +8,7 @@ import {
 	deleteCommentOrReply,
 	createReply,
 	getReplies,
+	getComment,
 } from './comment.controller'
 import { createReplySchema, updateCommentSchema } from './comment.request'
 
@@ -19,6 +20,7 @@ route.post(
 	validateRequest(createReplySchema),
 	catchAsync(createReply),
 )
+route.get('/:commentId', catchAsync(getComment))
 route.patch(
 	'/:commentId',
 	isOwnerComment,

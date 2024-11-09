@@ -19,6 +19,7 @@ export const MESSAGE = {
 			POSTS: 'Posts fetch successfully',
 			POST: 'Post fetch successfully',
 			COMMENTS: 'Comments fetched successfully',
+			COMMENT: 'Comment fetched successfully',
 			REPLIES: 'Replies fetched successfully',
 		},
 		UPDATED: {

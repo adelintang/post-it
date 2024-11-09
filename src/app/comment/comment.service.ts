@@ -6,7 +6,11 @@ import * as postRepository from '../post/post.repository'
 import * as userRepository from '../user/user.repository'
 
 import type { IComment, IReply } from './comment.interface'
-import { commentsDTOMapper, repliesDTOMapper } from './comment.mapper'
+import {
+	commentDTOMapper,
+	commentsDTOMapper,
+	repliesDTOMapper,
+} from './comment.mapper'
 import * as commentRepository from './comment.repository'
 
 export const createComment = async (data: Comment) => {
@@ -126,4 +130,15 @@ export const getReplies = async (commentId: string, query: QueryParams) => {
 		totalData,
 	)
 	return { data: repliesDTOMapper(replies as IReply[]), meta }
+}
+
+export const getComment = async (commentId: string) => {
+	const comment = await commentRepository.getComment(commentId)
+	if (!comment) {
+		return new AppError(
+			ERROR_CODE.NOT_FOUND.code,
+			MESSAGE.ERROR.NOT_FOUND.COMMENT,
+		)
+	}
+	return commentDTOMapper(comment as IComment)
 }

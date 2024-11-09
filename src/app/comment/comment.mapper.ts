@@ -10,25 +10,27 @@ import type {
 export const commentsDTOMapper = (comments: IComment[]): ICommentDTO[] => {
 	return comments.map((comment) => {
 		return {
-			id: comment.id,
-			content: comment.content,
-			created_at: comment.created_at,
-			updated_at: comment.updated_at,
-			user: searchUserDTOMapper(comment.user),
+			...commentDTOMapper(comment),
 			repliesCount: comment._count.comments,
 		}
 	})
 }
 
+export const commentDTOMapper = (comment: IComment): ICommentDTO => {
+	return {
+		id: comment.id,
+		content: comment.content,
+		created_at: comment.created_at,
+		updated_at: comment.updated_at,
+		user: searchUserDTOMapper(comment.user),
+	}
+}
+
 export const repliesDTOMapper = (replies: IReply[]): IReplyDTO[] => {
 	return replies.map((reply) => {
 		return {
-			id: reply.id,
-			content: reply.content,
-			created_at: reply.created_at,
-			updated_at: reply.updated_at,
+			...commentDTOMapper(reply),
 			parent_id: reply.parent_id,
-			user: searchUserDTOMapper(reply.user),
 		}
 	})
 }

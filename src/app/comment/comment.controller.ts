@@ -102,3 +102,17 @@ export const getReplies = async (
 		replies?.meta,
 	)
 }
+
+export const getComment = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const { commentId } = req.params
+	const comment = await commentService.getComment(commentId)
+	if (comment instanceof AppError) {
+		next(comment)
+		return
+	}
+	ResponseHandler.ok(res, comment, MESSAGE.SUCCESS.GET.COMMENT)
+}

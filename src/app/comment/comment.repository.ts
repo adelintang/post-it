@@ -120,5 +120,16 @@ export const getComment = async (commentId: string) => {
 		where: {
 			id: commentId,
 		},
+		include: {
+			user: {
+				include: {
+					profile: {
+						include: {
+							profileImage: true,
+						},
+					},
+				},
+			},
+		},
 	})
 }
