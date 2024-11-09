@@ -4,7 +4,12 @@ import { searchUserDTOMapper } from '../user/user.mapper'
 import type { IPost, IPostDTO } from './post.interface'
 
 export const postsDTOMapper = (posts: IPost[]): IPostDTO[] => {
-	return posts.map((post) => postDTOMapper(post))
+	return posts.map((post) => {
+		return {
+			...postDTOMapper(post),
+			commentsCount: post._count.comments,
+		}
+	})
 }
 
 export const postDTOMapper = (post: IPost): IPostDTO => {

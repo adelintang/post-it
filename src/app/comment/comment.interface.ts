@@ -1,7 +1,7 @@
 import type { Comment } from '../../prisma/client'
 import type { ISearchUser, ISearchUserDTO } from '../user/user.interface'
 
-interface ICount {
+export interface ICount {
 	comments: number
 }
 

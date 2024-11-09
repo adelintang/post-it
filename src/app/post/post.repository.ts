@@ -32,6 +32,17 @@ export const getPosts = async (query: QueryParams) => {
 				},
 			},
 			postImage: true,
+			_count: {
+				select: {
+					comments: {
+						where: {
+							parent_id: {
+								equals: null,
+							},
+						},
+					},
+				},
+			},
 		},
 		skip: (Number(page) - 1) * Number(perPage),
 		take: Number(perPage),
