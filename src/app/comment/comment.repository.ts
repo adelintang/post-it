@@ -47,6 +47,9 @@ export const getCommentsCount = async (postId: string) => {
 	return db.comment.count({
 		where: {
 			post_id: postId,
+			parent_id: {
+				equals: null,
+			},
 		},
 	})
 }
