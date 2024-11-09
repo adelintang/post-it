@@ -72,6 +72,7 @@ The mini social media including simple feature implemented like authentication, 
 
   - POST `/posts/comments` : Create Comment
   - GET `/posts/:postId/comments` : Get All Comment
+  - GET `/comments/:commentId` : Get Comment
   - PATCH `/comments/:commentId` : Update Comment or Reply
   - DELETE `/comments/:commentId` : Delete Comment or Reply
   
