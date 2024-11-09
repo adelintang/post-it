@@ -57,6 +57,7 @@ The mini social media including simple feature implemented like authentication, 
 
   - POST `/posts` : Create post
   - GET `/posts` : Get All Post
+  - GET `/posts/me` : Get All My Post
   - GET `/posts/:postId` : Get Post by postId
   - PATCH `/posts/:postId` : Update Post
   - DELETE `/posts/:postId` : Delete Post

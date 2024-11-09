@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
 
-import type { QueryParams } from '../../interface'
+import type { QueryParams, RequestWithAuthPayload } from '../../interface'
 import { AppError } from '../../middleware'
 import { MESSAGE, ResponseHandler } from '../../utils'
 
@@ -75,4 +75,24 @@ export const deletePost = async (
 		return
 	}
 	ResponseHandler.ok(res, post, MESSAGE.SUCCESS.DELETED.POST)
+}
+
+export const getPostsMe = async (
+	req: Request & { query: QueryParams },
+	res: Response,
+	next: NextFunction,
+) => {
+	const { query } = req
+	const { tokenPayload } = req as unknown as RequestWithAuthPayload
+	const postsMe = await postService.getPostsMe(tokenPayload.userId, query)
+	if (postsMe instanceof AppError) {
+		next(postsMe)
+		return
+	}
+	ResponseHandler.ok(
+		res,
+		postsMe?.data,
+		MESSAGE.SUCCESS.GET.POSTS_ME,
+		postsMe?.meta,
+	)
 }

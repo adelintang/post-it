@@ -18,6 +18,7 @@ export const MESSAGE = {
 			FOLLOWS_COUNT: 'Follower and following count fetched successfully',
 			POSTS: 'Posts fetch successfully',
 			POST: 'Post fetch successfully',
+			POSTS_ME: 'My posts fetch successfully',
 			COMMENTS: 'Comments fetched successfully',
 			COMMENT: 'Comment fetched successfully',
 			REPLIES: 'Replies fetched successfully',

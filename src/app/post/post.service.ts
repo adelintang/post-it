@@ -75,3 +75,18 @@ export const deletePost = async (postId: string) => {
 	}
 	return postDeleted
 }
+
+export const getPostsMe = async (userId: string, query: QueryParams) => {
+	const { page = '1', perPage = '10' } = query
+	const [postsMe, totalData] = await Promise.all([
+		postRepository.getPostsMe(userId, query),
+		postRepository.getPostsMeCount(userId),
+	])
+	const meta = metaPagination(
+		Number(page),
+		Number(perPage),
+		postsMe.length,
+		totalData,
+	)
+	return { data: postsDTOMapper(postsMe as IPost[]), meta }
+}

@@ -22,6 +22,7 @@ import {
 	getPost,
 	updatePost,
 	deletePost,
+	getPostsMe,
 } from './post.controller'
 import { createPostSchema, updatePostSchema } from './post.request'
 
@@ -56,6 +57,7 @@ route.post(
 	catchAsync(createComment),
 )
 
+route.get('/me', catchAsync(getPostsMe))
 route.get('/:postId', catchAsync(getPost))
 route.patch(
 	'/:postId',

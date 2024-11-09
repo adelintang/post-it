@@ -99,3 +99,45 @@ export const deletePost = async (postId: string) => {
 		},
 	})
 }
+
+export const getPostsMe = async (userId: string, query: QueryParams) => {
+	const { page = '1', perPage = '10' } = query
+	return db.post.findMany({
+		where: {
+			user_id: userId,
+		},
+		include: {
+			user: {
+				include: {
+					profile: {
+						include: {
+							profileImage: true,
+						},
+					},
+				},
+			},
+			postImage: true,
+			_count: {
+				select: {
+					comments: {
+						where: {
+							parent_id: {
+								equals: null,
+							},
+						},
+					},
+				},
+			},
+		},
+		skip: (Number(page) - 1) * Number(perPage),
+		take: Number(perPage),
+	})
+}
+
+export const getPostsMeCount = async (userId: string) => {
+	return db.post.count({
+		where: {
+			user_id: userId,
+		},
+	})
+}
