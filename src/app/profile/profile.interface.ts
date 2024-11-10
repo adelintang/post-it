@@ -27,5 +27,5 @@ export interface IProfileDTO {
 export interface IProfileWithProfileImageDTO {
 	id: string
 	fullname: string
-	profile_image: IProfileImageInProfileDTO
+	profile_image: IProfileImageInProfileDTO | null
 }

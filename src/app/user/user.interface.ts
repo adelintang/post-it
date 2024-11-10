@@ -12,7 +12,7 @@ export interface ISearchUser extends User {
 export interface ISearchUserDTO {
 	id: string
 	username: string
-	profile: IProfileWithProfileImageDTO
+	profile: IProfileWithProfileImageDTO | null
 }
 
 export interface IUserInProfileDTO {

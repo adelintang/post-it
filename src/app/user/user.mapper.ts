@@ -17,7 +17,9 @@ export const searchUserDTOMapper = (user: ISearchUser): ISearchUserDTO => {
 	return {
 		id: user.id,
 		username: user.username,
-		profile: profileWithProfileImageDTOMapper(user.profile),
+		profile: user.profile
+			? profileWithProfileImageDTOMapper(user.profile)
+			: null,
 	}
 }
 

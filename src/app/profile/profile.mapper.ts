@@ -37,6 +37,8 @@ export const profileWithProfileImageDTOMapper = (
 	return {
 		id: profile.id,
 		fullname: profile.fullname,
-		profile_image: profileImageInProfileDTOMapper(profile.profileImage),
+		profile_image: profile.profileImage
+			? profileImageInProfileDTOMapper(profile.profileImage)
+			: null,
 	}
 }
