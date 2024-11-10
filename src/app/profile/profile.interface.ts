@@ -21,7 +21,7 @@ export interface IProfileDTO {
 	fullname: string
 	bio: string
 	user: IUserInProfileDTO
-	profile_image: IProfileImageInProfileDTO
+	profile_image: IProfileImageInProfileDTO | null
 }
 
 export interface IProfileWithProfileImageDTO {

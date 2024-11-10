@@ -27,7 +27,9 @@ export const profileDTOMapper = (profile: IProfileWithUser): IProfileDTO => {
 		fullname: profile.fullname,
 		bio: profile.bio,
 		user: userInProfileDTOMapper(profile.user),
-		profile_image: profileImageInProfileDTOMapper(profile.profileImage),
+		profile_image: profile.profileImage
+			? profileImageInProfileDTOMapper(profile.profileImage)
+			: null,
 	}
 }
 
