@@ -30,4 +30,5 @@ export interface IReplyDTO {
 	updated_at: Date
 	parent_id: string | null
 	user: ISearchUserDTO
+	likesCount: number
 }

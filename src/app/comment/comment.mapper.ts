@@ -31,6 +31,7 @@ export const repliesDTOMapper = (replies: IReply[]): IReplyDTO[] => {
 	return replies.map((reply) => {
 		return {
 			...commentDTOMapper(reply),
+			likesCount: reply._count.likes,
 			parent_id: reply.parent_id,
 		}
 	})

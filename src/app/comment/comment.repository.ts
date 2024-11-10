@@ -105,6 +105,11 @@ export const getReplies = async (commentId: string, query: QueryParams) => {
 					},
 				},
 			},
+			_count: {
+				select: {
+					likes: true,
+				},
+			},
 		},
 		skip: (Number(page) - 1) * Number(perPage),
 		take: Number(perPage),
