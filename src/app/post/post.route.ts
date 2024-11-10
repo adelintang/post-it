@@ -9,7 +9,12 @@ import {
 import { catchAsync, storageConfig, uploadConfig } from '../../utils'
 import { createComment, getComments } from '../comment/comment.controller'
 import { createCommentSchema } from '../comment/comment.request'
-import { likePost, unlikePost, getWhoLikesPost } from '../like/like.controller'
+import {
+	likePost,
+	unlikePost,
+	getWhoLikesPost,
+	getLikePost,
+} from '../like/like.controller'
 import {
 	createPostImage,
 	updatePostImage,
@@ -58,6 +63,7 @@ route.post(
 	catchAsync(createComment),
 )
 
+route.get('/:postId/like/check', catchAsync(getLikePost))
 route.post('/:postId/like', catchAsync(likePost))
 route.delete('/:postId/unlike', catchAsync(unlikePost))
 route.get('/:postId/likes', catchAsync(getWhoLikesPost))

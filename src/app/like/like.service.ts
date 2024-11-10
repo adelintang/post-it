@@ -64,6 +64,18 @@ export const getWhoLikesPost = async (postId: string, query: QueryParams) => {
 	return whoLikesDTOMapper(whoLikesPost as IWhoLikes[])
 }
 
+export const getLikePost = async (postId: string, userId: string) => {
+	const post = await postRepository.getPost(postId)
+	if (!post) {
+		return new AppError(ERROR_CODE.NOT_FOUND.code, MESSAGE.ERROR.NOT_FOUND.POST)
+	}
+	const like = await likeRepository.getLikePost(postId, userId)
+	if (!like) {
+		return { like: false }
+	}
+	return { like: true }
+}
+
 export const likeComment = async (commentId: string, userId: string) => {
 	const user = await userRepository.getUser(userId)
 	if (!user) {
@@ -114,4 +126,19 @@ export const unlikeComment = async (commentId: string, userId: string) => {
 		)
 	}
 	return unlikeComment
+}
+
+export const getLikeComment = async (commentId: string, userId: string) => {
+	const comment = await commentRepository.getComment(commentId)
+	if (!comment) {
+		return new AppError(
+			ERROR_CODE.NOT_FOUND.code,
+			MESSAGE.ERROR.NOT_FOUND.COMMENT,
+		)
+	}
+	const like = await likeRepository.getLikeComment(commentId, userId)
+	if (!like) {
+		return { like: false }
+	}
+	return { like: true }
 }

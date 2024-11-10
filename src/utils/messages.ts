@@ -26,6 +26,8 @@ export const MESSAGE = {
 			REPLIES: 'Replies fetched successfully',
 			WHO_LIKES_POST: 'Who likes post fetched successfully',
 			WHO_LIKES_COMMENT: 'Who likes comment fetched successfully',
+			LIKE_POST_CHECK: 'Like post check fetched successfully',
+			LIKE_COMMENT_CHECK: 'Like comment check fetched successfully',
 		},
 		UPDATED: {
 			PROFILE: 'Profile updated successfully',

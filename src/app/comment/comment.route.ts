@@ -2,7 +2,11 @@ import { Router } from 'express'
 
 import { isOwnerComment, validateRequest } from '../../middleware'
 import { catchAsync } from '../../utils'
-import { likeComment, unlikeComment } from '../like/like.controller'
+import {
+	likeComment,
+	unlikeComment,
+	getLikeComment,
+} from '../like/like.controller'
 
 import {
 	updateCommentOrReply,
@@ -22,6 +26,7 @@ route.post(
 	catchAsync(createReply),
 )
 
+route.get('/:commentId/like/check', catchAsync(getLikeComment))
 route.post('/:commentId/like', catchAsync(likeComment))
 route.delete('/:commentId/unlike', catchAsync(unlikeComment))
 

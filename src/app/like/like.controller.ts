@@ -51,6 +51,21 @@ export const getWhoLikesPost = async (
 	ResponseHandler.ok(res, whoLikesPost, MESSAGE.SUCCESS.GET.WHO_LIKES_POST)
 }
 
+export const getLikePost = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const { postId } = req.params
+	const { tokenPayload } = req as unknown as RequestWithAuthPayload
+	const like = await likeService.getLikePost(postId, tokenPayload.userId)
+	if (like instanceof AppError) {
+		next(like)
+		return
+	}
+	ResponseHandler.ok(res, like, MESSAGE.SUCCESS.GET.LIKE_POST_CHECK)
+}
+
 export const likeComment = async (
 	req: Request,
 	res: Response,
@@ -89,4 +104,19 @@ export const unlikeComment = async (
 		return
 	}
 	ResponseHandler.ok(res, unlikeComment, MESSAGE.SUCCESS.DELETED.UNLIKE_COMMENT)
+}
+
+export const getLikeComment = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const { commentId } = req.params
+	const { tokenPayload } = req as unknown as RequestWithAuthPayload
+	const like = await likeService.getLikeComment(commentId, tokenPayload.userId)
+	if (like instanceof AppError) {
+		next(like)
+		return
+	}
+	ResponseHandler.ok(res, like, MESSAGE.SUCCESS.GET.LIKE_COMMENT_CHECK)
 }
