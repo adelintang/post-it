@@ -40,10 +40,10 @@ const ProductFile = {
 }
 
 const UserData = {
-	id: 'user-4897a10-4920-ba1c-c25cfec7fcc2',
-	name: 'john doe',
+	id: 'user-59b3da99-1505-417c-a81a-6b684458dc6c',
+	username: 'johndoe',
 	email: 'johndoe@gmail.com',
-	role: 'SELLER',
+	role: 'USER',
 }
 
 export const fakeToken =

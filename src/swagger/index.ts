@@ -8,7 +8,7 @@ const HOST = process.env.HOST ?? 'http://localhost'
 export const swaggerDocument: OpenAPIV3.Document = {
 	openapi: '3.0.0',
 	info: {
-		title: 'Template API Documentation',
+		title: 'Post It API Documentation',
 		description: 'Documentation for all endpoint are you need to read',
 		version: '1.0.0',
 	},
