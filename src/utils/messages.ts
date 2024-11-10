@@ -9,6 +9,8 @@ export const MESSAGE = {
 			POST_IMAGE: 'Post image uploaded successfully',
 			COMMENT: 'Comment created successfully',
 			REPLY: 'Replies created successfully',
+			LIKE_POST: 'Like post successfully',
+			LIKE_COMMENT: 'Like comment successfully',
 		},
 		GET: {
 			USERS: 'Users fetch successfully',
@@ -22,6 +24,8 @@ export const MESSAGE = {
 			COMMENTS: 'Comments fetched successfully',
 			COMMENT: 'Comment fetched successfully',
 			REPLIES: 'Replies fetched successfully',
+			WHO_LIKES_POST: 'Who likes post fetched successfully',
+			WHO_LIKES_COMMENT: 'Who likes comment fetched successfully',
 		},
 		UPDATED: {
 			PROFILE: 'Profile updated successfully',
@@ -36,6 +40,8 @@ export const MESSAGE = {
 			POST: 'Post deleted successfully',
 			POST_IMAGE: 'Post image deleted successfully',
 			COMMENT: 'Comment deleted successfully',
+			UNLIKE_POST: 'Unlike post successfully',
+			UNLIKE_COMMENT: 'Unlike comment successfully',
 		},
 		LOGIN: 'User login successfully',
 		ACCESS_TOKEN: 'Access token created successfully',
@@ -50,6 +56,10 @@ export const MESSAGE = {
 		BAD_REQUEST: {
 			EMAIL: 'Email already used',
 			USERNAME: 'Username already used',
+			LIKE_POST: 'You have already liked this post',
+			UNLIKE_POST: 'You have not liked this post',
+			LIKE_COMMENT: 'You have already liked this comment',
+			UNLIKE_COMMENT: 'You have not liked this comment',
 		},
 		NOT_FOUND: {
 			USER: 'User not found',
@@ -82,6 +92,8 @@ export const MESSAGE = {
 				POST_IMAGE: 'Create post image failed',
 				COMMENT: 'Create comment failed',
 				REPLY: 'Create reply failed',
+				LIKE_POST: 'Like post failed',
+				LIKE_COMMENT: 'Like comment failed',
 			},
 			UPDATED: {
 				PROFILE: 'Update profile failed',
@@ -97,6 +109,8 @@ export const MESSAGE = {
 				POST: 'Delete post failed',
 				POST_IMAGE: 'Delete post image failed',
 				COMMENT: 'Delete comment failed',
+				UNLIKE_POST: 'Unlike post failed',
+				UNLIKE_COMMENT: 'Unlike comment failed',
 			},
 		},
 	},

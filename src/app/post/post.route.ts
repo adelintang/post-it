@@ -9,6 +9,7 @@ import {
 import { catchAsync, storageConfig, uploadConfig } from '../../utils'
 import { createComment, getComments } from '../comment/comment.controller'
 import { createCommentSchema } from '../comment/comment.request'
+import { likePost, unlikePost, getWhoLikesPost } from '../like/like.controller'
 import {
 	createPostImage,
 	updatePostImage,
@@ -56,6 +57,10 @@ route.post(
 	validateRequest(createCommentSchema),
 	catchAsync(createComment),
 )
+
+route.post('/:postId/like', catchAsync(likePost))
+route.delete('/:postId/unlike', catchAsync(unlikePost))
+route.get('/:postId/likes', catchAsync(getWhoLikesPost))
 
 route.get('/me', catchAsync(getPostsMe))
 route.get('/:postId', catchAsync(getPost))
