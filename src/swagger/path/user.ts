@@ -8,32 +8,11 @@ export const userPath: OpenAPIV3.PathsObject = {
 			tags: ['User'],
 			summary: 'Endpoint for get all user',
 			security: [{ bearerAuth: [] }],
-			parameters: [customParameter('query', 'search', 'Search user by name')],
-			// parameters: [
-			// {
-			// 	name: 'Authorization',
-			// 	in: 'header',
-			// 	required: true,
-			// 	schema: {
-			// 		type: 'string',
-			// 		example: `Bearer ${fakeToken}`,
-			// 	},
-			// 	description: 'Bearer token for authorization',
-			// },
-			// ],
+			parameters: [
+				customParameter('query', 'search', 'Search user by username'),
+			],
 			responses: {
 				'200': customResponse('OK', EXAMPLE_RESPONSE.USERS_GET),
-			},
-		},
-	},
-	'/users/{userId}': {
-		get: {
-			tags: ['User'],
-			summary: 'Endpoint for get user by id',
-			security: [{ bearerAuth: [] }],
-			parameters: [customParameter('path', 'userId', 'Unique id from user')],
-			responses: {
-				'200': customResponse('OK', EXAMPLE_RESPONSE.USER_GET),
 			},
 		},
 	},
