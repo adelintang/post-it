@@ -11,6 +11,7 @@ export const commentsDTOMapper = (comments: IComment[]): ICommentDTO[] => {
 	return comments.map((comment) => {
 		return {
 			...commentDTOMapper(comment),
+			likesCount: comment._count.likes,
 			repliesCount: comment._count.comments,
 		}
 	})

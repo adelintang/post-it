@@ -19,6 +19,7 @@ export interface ICommentDTO {
 	created_at: Date
 	updated_at: Date
 	user: ISearchUserDTO
+	likesCount?: number
 	repliesCount?: number
 }
 

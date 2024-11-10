@@ -35,6 +35,7 @@ export const getComments = async (postId: string, query: QueryParams) => {
 			_count: {
 				select: {
 					comments: true,
+					likes: true,
 				},
 			},
 		},
