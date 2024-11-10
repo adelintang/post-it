@@ -3,6 +3,7 @@ import type { ISearchUser, ISearchUserDTO } from '../user/user.interface'
 
 export interface ICount {
 	comments: number
+	likes: number
 }
 
 export interface IComment extends Comment {

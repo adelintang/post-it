@@ -7,6 +7,7 @@ export const postsDTOMapper = (posts: IPost[]): IPostDTO[] => {
 	return posts.map((post) => {
 		return {
 			...postDTOMapper(post),
+			likesCount: post._count.likes,
 			commentsCount: post._count.comments,
 		}
 	})

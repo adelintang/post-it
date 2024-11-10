@@ -16,5 +16,6 @@ export interface IPostDTO {
 	updated_at: Date
 	user: ISearchUserDTO
 	post_image: IPostImageInPostDTO | null
+	likesCount?: number
 	commentsCount?: number
 }
