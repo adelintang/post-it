@@ -115,14 +115,3 @@ export const unlikeComment = async (commentId: string, userId: string) => {
 	}
 	return unlikeComment
 }
-
-export const getWhoLikesComment = async (
-	commentId: string,
-	query: QueryParams,
-) => {
-	const whoLikesComment = await likeRepository.getWhoLikesComment(
-		commentId,
-		query,
-	)
-	return whoLikesDTOMapper(whoLikesComment as IWhoLikes[])
-}

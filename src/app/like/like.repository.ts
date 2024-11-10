@@ -78,31 +78,3 @@ export const unlikeComment = async (likeId: string) => {
 		},
 	})
 }
-
-export const getWhoLikesComment = async (
-	commentId: string,
-	query: QueryParams,
-) => {
-	const { search = '' } = query
-	return db.like.findMany({
-		where: {
-			comment_id: commentId,
-			user: {
-				username: {
-					contains: search.trim(),
-				},
-			},
-		},
-		include: {
-			user: {
-				include: {
-					profile: {
-						include: {
-							profileImage: true,
-						},
-					},
-				},
-			},
-		},
-	})
-}

@@ -87,7 +87,6 @@ The mini social media including simple feature implemented like authentication, 
   - GET `/posts/:postId/likes` : Get All Users Who Liked Post
   - POST `/comments/:commentId/like` : Like Comment
   - DELETE `/comments/:commentId/unlike` : Unlike Comment
-  - GET `/comments/:commentId/likes` : Get All Users Who Liked Comment
 
 
 

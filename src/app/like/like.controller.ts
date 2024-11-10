@@ -90,22 +90,3 @@ export const unlikeComment = async (
 	}
 	ResponseHandler.ok(res, unlikeComment, MESSAGE.SUCCESS.DELETED.UNLIKE_COMMENT)
 }
-
-export const getWhoLikesComment = async (
-	req: Request & { query: QueryParams },
-	res: Response,
-	next: NextFunction,
-) => {
-	const { commentId } = req.params
-	const { query } = req
-	const whoLikesComment = await likeService.getWhoLikesComment(commentId, query)
-	if (whoLikesComment instanceof AppError) {
-		next(whoLikesComment)
-		return
-	}
-	ResponseHandler.ok(
-		res,
-		whoLikesComment,
-		MESSAGE.SUCCESS.GET.WHO_LIKES_COMMENT,
-	)
-}
