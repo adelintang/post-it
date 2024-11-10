@@ -22,33 +22,42 @@ const UserRegisterData = {
 	role: 'USER',
 }
 
+const ProfileImageGeneralData = {
+	id: 'profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773',
+	file_url:
+		'http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg',
+}
+
+const ProfileGeneralData = {
+	id: 'profile-c24e7a1d-997b-4d5a-a539-026d56761903',
+	fullname: 'Johanes Alexandra',
+	profile_image: ProfileImageGeneralData,
+}
+
+const UserGeneralData = {
+	id: 'user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7',
+	username: 'johanes',
+}
+
 const UserData = {
 	id: 'user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7',
 	username: 'johanes',
-	profile: {
-		id: 'profile-c24e7a1d-997b-4d5a-a539-026d56761903',
-		fullname: 'Johanes Alexandra',
-		profile_image: {
-			id: 'profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773',
-			file_url:
-				'http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg',
-		},
-	},
+	profile: ProfileGeneralData,
 }
 
-const ProductData = {
-	id: 'aba89b70-52dd-41df-bdd8-8e5f4226dcb4',
-	name: 'PlayStation 5 Digital Edition',
-	desc: 'Konsol game next-gen dari Sony tanpa drive Blu-ray.',
-	price: 8500000,
-	stock: 20,
+const ProfileData = {
+	id: 'profile-c8164c32-9f66-4982-aeb9-7c0fdbc2add7',
+	bio: "I'am Student",
+	fullname: 'John Doe',
+	user_id: 'user-59b3da99-1505-417c-a81a-6b684458dc6c',
 }
 
-const ProductDataWithMutation = {
-	...ProductData,
-	user_id: 'user-27e53b8d-dc3c-46a3-ae3b-52a167e3701e',
-	created_at: '2024-11-02T17:14:12.221Z',
-	updated_at: '2024-11-02T17:14:12.221Z',
+const GetProfileData = {
+	id: 'profile-c24e7a1d-997b-4d5a-a539-026d56761903',
+	fullname: 'Johanes Alexandra',
+	bio: "I'am Student and i'am exiceted learn web dev",
+	user: UserGeneralData,
+	profile_image: ProfileImageGeneralData,
 }
 
 const ProductFile = {
@@ -89,57 +98,19 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 		data: [UserData],
 		meta: Meta,
 	},
-	PRODUCTS_GET: {
+	PROFILE_CREATED: {
 		status: 'success',
-		message: MESSAGE.SUCCESS.GET.PRODUCTS,
-		data: [
-			{
-				...ProductData,
-				product_file: null,
-			},
-		],
-		meta: Meta,
+		message: MESSAGE.SUCCESS.CREATED.PROFILE,
+		data: ProfileData,
 	},
-	PRODUCT_GET: {
+	PROFILE_GET: {
 		status: 'success',
-		message: MESSAGE.SUCCESS.GET.PRODUCT,
-		data: {
-			...ProductData,
-			user: UserData,
-			product_file: null,
-		},
+		message: MESSAGE.SUCCESS.GET.PROFILE,
+		data: GetProfileData,
 	},
-	PRODUCT_CREATED: {
+	PROFILE_UPDATED: {
 		status: 'success',
-		message: MESSAGE.SUCCESS.CREATED.PRODUCT,
-		data: ProductDataWithMutation,
-	},
-	PRODUCT_UPDATED: {
-		status: 'success',
-		message: MESSAGE.SUCCESS.UPDATED.PRODUCT,
-		data: ProductDataWithMutation,
-	},
-	PRODUCT_DELETED: {
-		status: 'success',
-		message: MESSAGE.SUCCESS.DELETED.PRODUCT,
-		data: ProductDataWithMutation,
-	},
-	PRODUCT_FILE_CREATED: {
-		status: 'success',
-		message: MESSAGE.SUCCESS.CREATED.FILE,
-		data: ProductFile,
-	},
-	PRODUCT_FILE_UPDATED: {
-		status: 'success',
-		message: MESSAGE.SUCCESS.UPDATED.FILE,
-		data: ProductFile,
-	},
-	PRODUCT_FILE_DELETED: {
-		status: 'success',
-		message: MESSAGE.SUCCESS.DELETED.FILE,
-		data: {
-			id: ProductFile.id,
-			product_id: ProductFile.product_id,
-		},
+		message: MESSAGE.SUCCESS.UPDATED.PROFILE,
+		data: ProfileData,
 	},
 }
