@@ -1,6 +1,12 @@
 import { type OpenAPIV3 } from 'openapi-types'
 
-import { authPath, userPath, profilePath, profileImagePath } from './path'
+import {
+	authPath,
+	userPath,
+	profilePath,
+	profileImagePath,
+	followPath,
+} from './path'
 
 const PORT = process.env.PORT ?? 3000
 const HOST = process.env.HOST ?? 'http://localhost'
@@ -35,13 +41,13 @@ export const swaggerDocument: OpenAPIV3.Document = {
 			name: 'Profile Image',
 			description: 'Endpoints related to Profile Image',
 		},
-		// { name: 'Follow', description: 'Endpoints related to Follow' },
+		{ name: 'Follow', description: 'Endpoints related to Follow' },
 	],
 	paths: {
 		...authPath,
 		...userPath,
 		...profilePath,
 		...profileImagePath,
-		// ...followPath,
+		...followPath,
 	},
 }

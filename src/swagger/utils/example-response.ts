@@ -69,6 +69,19 @@ const ProfileFileData = {
 	profile_id: 'profile-5128f16a-68e5-4b40-b1b8-d28a691d84da',
 }
 
+const FollowData = {
+	id: 'follow-ea643e17-326d-4d17-9b52-8751cc3321e2',
+	follower_id: 'user-59b3da99-1505-417c-a81a-6b684458dc6c',
+	following_id: 'user-d5771ab9-25ae-4861-aa3a-f026541f0496',
+	created_at: '2024-11-11T16:29:09.492Z',
+	updated_at: '2024-11-11T16:29:09.492Z',
+}
+
+const FollowsCountData = {
+	followers: 0,
+	followings: 1,
+}
+
 export const fakeToken =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp'
 
@@ -130,5 +143,30 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 			id: ProfileFileData.id,
 			profile_id: ProfileFileData.profile_id,
 		},
+	},
+	FOLLOWING: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.FOLLOW,
+		data: FollowData,
+	},
+	UNFOLLOW: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.UNFOLLOW,
+		data: FollowData,
+	},
+	FOLLOWERS_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.FOLLOWERS,
+		data: [UserData],
+	},
+	FOLLOWINGS_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.FOLLOWINGS,
+		data: [UserData],
+	},
+	FOLLOWS_COUNT_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.FOLLOWS_COUNT,
+		data: FollowsCountData,
 	},
 }
