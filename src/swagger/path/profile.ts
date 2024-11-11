@@ -41,7 +41,7 @@ export const profilePath: OpenAPIV3.PathsObject = {
 		},
 		patch: {
 			tags: ['Profile'],
-			summary: 'Endpoint for get profile',
+			summary: 'Endpoint for update profile',
 			security: [{ bearerAuth: [] }],
 			parameters: [
 				customParameter('path', 'profileId', 'Unique id from profile'),
