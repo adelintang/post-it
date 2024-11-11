@@ -40,7 +40,10 @@ export const followPath: OpenAPIV3.PathsObject = {
 			tags: ['Follow'],
 			summary: 'Endpoint for get followers user',
 			security: [{ bearerAuth: [] }],
-			parameters: [customParameter('path', 'userId', 'Unique id from user')],
+			parameters: [
+				customParameter('path', 'userId', 'Unique id from user'),
+				customParameter('query', 'search', 'Search by username'),
+			],
 			responses: {
 				'200': customResponse('OK', EXAMPLE_RESPONSE.FOLLOWERS_GET),
 			},
@@ -51,7 +54,10 @@ export const followPath: OpenAPIV3.PathsObject = {
 			tags: ['Follow'],
 			summary: 'Endpoint for get following user',
 			security: [{ bearerAuth: [] }],
-			parameters: [customParameter('path', 'userId', 'Unique id from user')],
+			parameters: [
+				customParameter('path', 'userId', 'Unique id from user'),
+				customParameter('query', 'search', 'Search by username'),
+			],
 			responses: {
 				'200': customResponse('OK', EXAMPLE_RESPONSE.FOLLOWINGS_GET),
 			},
