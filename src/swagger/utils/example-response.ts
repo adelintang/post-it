@@ -159,6 +159,19 @@ const GetReplies = {
 	parent_id: CreateReply.parent_id,
 }
 
+const LikeData = {
+	id: 'like-5a08b839-1cb9-4967-92c3-a54c0e07c07c',
+	user_id: 'user-59b3da99-1505-417c-a81a-6b684458dc6c',
+	post_id: 'post-439e65d6-629c-4594-9aae-8387ba4a3fbf',
+	comment_id: null,
+}
+
+const LikeCommentData = {
+	...LikeData,
+	post_id: null,
+	comment_id: 'comment-c7b1d717-4579-4890-82bb-cac8eeb9d215',
+}
+
 export const fakeToken =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp'
 
@@ -332,5 +345,44 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 		message: MESSAGE.SUCCESS.GET.REPLIES,
 		data: [GetReplies],
 		meta: Meta,
+	},
+	LIKE_POST: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.LIKE_POST,
+		data: LikeData,
+	},
+	UNLIKE_POST: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.UNLIKE_POST,
+		data: LikeData,
+	},
+	WHO_LIKES_POST: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.WHO_LIKES_POST,
+		data: [UserData],
+	},
+	LIKE_POST_CHECK: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.LIKE_POST_CHECK,
+		data: {
+			like: true,
+		},
+	},
+	LIKE_COMMENT: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.LIKE_COMMENT,
+		data: LikeCommentData,
+	},
+	UNLIKE_COMMENT: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.UNLIKE_COMMENT,
+		data: LikeCommentData,
+	},
+	LIKE_COMMENT_CHECK: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.LIKE_COMMENT_CHECK,
+		data: {
+			like: true,
+		},
 	},
 }
