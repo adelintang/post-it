@@ -1,4 +1,5 @@
 export * from './auth'
 export * from './user'
 export * from './profile'
+export * from './profile-image'
 export * from './follow'

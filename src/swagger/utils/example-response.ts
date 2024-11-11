@@ -60,13 +60,13 @@ const GetProfileData = {
 	profile_image: ProfileImageGeneralData,
 }
 
-const ProductFile = {
-	id: 'file-7494a417-87d8-4935-a981-fb626849249a',
+const ProfileFileData = {
+	id: 'profile-image-14874ca4-d7a7-4f71-a927-e1f2bc5fc55e',
 	file_url:
-		'http://localhost:3000/products/files/file-1730482012446-578818135.jpg',
-	filename: 'file-1730482012446-578818135.jpg',
-	size: 3901,
-	product_id: 'product-24841147-6d24-46c5-8c73-875c7c6129ae',
+		'http://localhost:3000/profiles/files/file-1731341046422-455151246.jpg',
+	filename: 'file-1731341046422-455151246.jpg',
+	size: 6572,
+	profile_id: 'profile-5128f16a-68e5-4b40-b1b8-d28a691d84da',
 }
 
 export const fakeToken =
@@ -112,5 +112,23 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 		status: 'success',
 		message: MESSAGE.SUCCESS.UPDATED.PROFILE,
 		data: ProfileData,
+	},
+	PROFILE_IMAGE_CREATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.PROFILE_IMAGE,
+		data: ProfileFileData,
+	},
+	PROFILE_IMAGE_UPDATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.UPDATED.PROFILE_IMAGE,
+		data: ProfileFileData,
+	},
+	PROFILE_IMAGE_DELETED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.PROFILE_IMAGE,
+		data: {
+			id: ProfileFileData.id,
+			profile_id: ProfileFileData.profile_id,
+		},
 	},
 }
