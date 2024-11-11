@@ -110,6 +110,15 @@ const GetPostsData = {
 	commentsCount: 0,
 }
 
+const PostFileData = {
+	id: 'post-image-07b2fb9b-897d-498b-af7a-9df62246ecea',
+	file_url:
+		'http://localhost:3000/posts/files/file-1731349512917-710527355.jpg',
+	filename: 'file-1731349512917-710527355.jpg',
+	size: 5667,
+	post_id: 'post-439e65d6-629c-4594-9aae-8387ba4a3fbf',
+}
+
 export const fakeToken =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp'
 
@@ -228,5 +237,23 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 		message: MESSAGE.SUCCESS.GET.POSTS,
 		data: [GetPostsData],
 		meta: Meta,
+	},
+	POST_IMAGE_CREATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.POST_IMAGE,
+		data: PostFileData,
+	},
+	POST_IMAGE_UPDATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.UPDATED.POST_IMAGE,
+		data: PostFileData,
+	},
+	POST_IMAGE_DELETED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.POST_IMAGE,
+		data: {
+			id: PostFileData.id,
+			post_id: PostFileData.post_id,
+		},
 	},
 }

@@ -67,7 +67,7 @@ The mini social media including simple feature implemented like authentication, 
   - POST `/posts/files/:postId/upload`
   - PATCH `/posts/files/:postImageId/upload`
   - DELETE `/posts/files/:postImageId`
-  - DELETE `/posts/files/:filename`
+  - GET `/posts/files/:filename`
 
 - `Comment`
 
