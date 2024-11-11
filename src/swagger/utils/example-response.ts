@@ -119,6 +119,46 @@ const PostFileData = {
 	post_id: 'post-439e65d6-629c-4594-9aae-8387ba4a3fbf',
 }
 
+const CommentData = {
+	id: 'comment-e4171606-b443-42c9-8ac4-a848868daea2',
+	content: 'This is beautiful mount',
+	user_id: 'user-59b3da99-1505-417c-a81a-6b684458dc6c',
+	post_id: 'post-439e65d6-629c-4594-9aae-8387ba4a3fbf',
+	parent_id: null,
+	created_at: '2024-11-11T19:21:20.463Z',
+	updated_at: '2024-11-11T19:21:20.463Z',
+}
+
+const GetComment = {
+	id: CommentData.id,
+	content: CommentData.content,
+	created_at: CommentData.created_at,
+	updated_at: CommentData.updated_at,
+	user: UserData,
+}
+
+const GetComments = {
+	...GetComment,
+	likesCount: 0,
+	repliesCount: 0,
+}
+
+const CreateReply = {
+	...CommentData,
+	content: 'Yes true!',
+	parent_id: 'comment-c7b1d717-4579-4890-82bb-cac8eeb9d215',
+}
+
+const GetReplies = {
+	id: CreateReply.id,
+	content: CreateReply.content,
+	created_at: CreateReply.created_at,
+	updated_at: CreateReply.updated_at,
+	user: UserData,
+	likesCount: 0,
+	parent_id: CreateReply.parent_id,
+}
+
 export const fakeToken =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp'
 
@@ -255,5 +295,42 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 			id: PostFileData.id,
 			post_id: PostFileData.post_id,
 		},
+	},
+	COMMENT_CREATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.COMMENT,
+		data: CommentData,
+	},
+	COMMENT_UPDATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.UPDATED.COMMENT,
+		data: CommentData,
+	},
+	COMMENT_DELETED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.COMMENT,
+		data: CommentData,
+	},
+	COMMENTS_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.COMMENTS,
+		data: [GetComments],
+		meta: Meta,
+	},
+	COMMENT_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.COMMENT,
+		data: GetComment,
+	},
+	REPLY_CREATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.REPLY,
+		data: CreateReply,
+	},
+	REPLIES_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.REPLIES,
+		data: [GetReplies],
+		meta: Meta,
 	},
 }

@@ -8,6 +8,7 @@ import {
 	followPath,
 	postPath,
 	postImagePath,
+	commentPath,
 } from './path'
 
 const PORT = process.env.PORT ?? 3000
@@ -46,6 +47,7 @@ export const swaggerDocument: OpenAPIV3.Document = {
 		{ name: 'Follow', description: 'Endpoints related to Follow' },
 		{ name: 'Post', description: 'Endpoints related to Post' },
 		{ name: 'Post Image', description: 'Endpoints related to Post Image' },
+		{ name: 'Comment', description: 'Endpoints related to Comment' },
 	],
 	paths: {
 		...authPath,
@@ -55,5 +57,6 @@ export const swaggerDocument: OpenAPIV3.Document = {
 		...followPath,
 		...postPath,
 		...postImagePath,
+		...commentPath,
 	},
 }
