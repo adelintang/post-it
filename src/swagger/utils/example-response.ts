@@ -82,6 +82,34 @@ const FollowsCountData = {
 	followings: 1,
 }
 
+const PostData = {
+	id: 'post-1d6c87c5-c655-496d-8163-d3cba16f1877',
+	content: 'Time to traveling',
+	created_at: '2024-11-11T17:24:29.184Z',
+	updated_at: '2024-11-11T17:24:29.184Z',
+	user_id: 'user-59b3da99-1505-417c-a81a-6b684458dc6c',
+}
+
+const PostImageGeneralData = {
+	id: 'post-image-798d02f7-4d9d-4374-83ca-f054d8fc1773',
+	file_url: 'http://localhost:3000/posts/files/file-1730907730863-7415028.jpg',
+}
+
+const GetPostData = {
+	id: PostData.id,
+	content: PostData.content,
+	created_at: PostData.created_at,
+	updated_at: PostData.updated_at,
+	user: UserData,
+	post_image: PostImageGeneralData,
+}
+
+const GetPostsData = {
+	...GetPostData,
+	likesCount: 0,
+	commentsCount: 0,
+}
+
 export const fakeToken =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp'
 
@@ -168,5 +196,37 @@ export const EXAMPLE_RESPONSE: Record<string, IExampleResponse> = {
 		status: 'success',
 		message: MESSAGE.SUCCESS.GET.FOLLOWS_COUNT,
 		data: FollowsCountData,
+	},
+	POST_CREATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.CREATED.POST,
+		data: PostData,
+	},
+	POST_UPDATED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.UPDATED.POST,
+		data: PostData,
+	},
+	POST_DELETED: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.DELETED.POST,
+		data: PostData,
+	},
+	POST_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.POST,
+		data: GetPostData,
+	},
+	POSTS_ME_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.POSTS_ME,
+		data: [GetPostsData],
+		meta: Meta,
+	},
+	POSTS_GET: {
+		status: 'success',
+		message: MESSAGE.SUCCESS.GET.POSTS,
+		data: [GetPostsData],
+		meta: Meta,
 	},
 }
