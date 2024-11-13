@@ -1,12 +1,11 @@
 import { Router } from 'express'
 
-import { DIRECTORY_NAME } from '../../interface'
 import {
 	isOwnerPost,
 	isOwnerPostImage,
 	validateRequest,
 } from '../../middleware'
-import { catchAsync, storageConfig, uploadConfig } from '../../utils'
+import { catchAsync, upload } from '../../utils'
 import { createComment, getComments } from '../comment/comment.controller'
 import { createCommentSchema } from '../comment/comment.request'
 import {
@@ -19,7 +18,6 @@ import {
 	createPostImage,
 	updatePostImage,
 	deletePostImage,
-	getPostImage,
 } from '../post-image/post-image.controller'
 
 import {
@@ -33,9 +31,6 @@ import {
 import { createPostSchema, updatePostSchema } from './post.request'
 
 const route = Router()
-
-const storage = storageConfig(DIRECTORY_NAME.POST)
-const upload = uploadConfig(storage)
 
 route.post(
 	'/files/:postId/upload',
@@ -54,7 +49,6 @@ route.delete(
 	isOwnerPostImage,
 	catchAsync(deletePostImage),
 )
-route.get('/files/:filename', catchAsync(getPostImage))
 
 route.get('/:postId/comments', catchAsync(getComments))
 route.post(

@@ -86,8 +86,4 @@ export interface RequestWithAuthPayload extends Request {
 	tokenPayload: AuthPayload
 }
 
-export interface RequestFilePayload extends Request {
-	fileUrl: string
-}
-
 export const RefreshTokenName = 'refreshToken'

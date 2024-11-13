@@ -5,6 +5,7 @@ import type {
 
 export interface IUpdatePostImage extends IUpdateProfileImage {}
 export interface ICreatePostImage extends IUpdateProfileImage {
+	public_id: string
 	post_id: string
 }
 

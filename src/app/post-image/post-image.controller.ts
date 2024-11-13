@@ -1,12 +1,6 @@
-import path from 'path'
-
 import type { Request, Response, NextFunction } from 'express'
 
-import {
-	ERROR_CODE,
-	DIRECTORY_NAME,
-	type RequestFilePayload,
-} from '../../interface'
+import { ERROR_CODE } from '../../interface'
 import { AppError } from '../../middleware'
 import { ResponseHandler, MESSAGE } from '../../utils'
 
@@ -18,7 +12,6 @@ export const createPostImage = async (
 	next: NextFunction,
 ) => {
 	const { file } = req
-	const { fileUrl } = req as unknown as RequestFilePayload
 	const { postId } = req.params
 	if (!file) {
 		const error = new AppError(
@@ -28,7 +21,7 @@ export const createPostImage = async (
 		next(error)
 		return
 	}
-	const data = await postImageService.createPostImage(postId, file, fileUrl)
+	const data = await postImageService.createPostImage(postId, file)
 	if (data instanceof AppError) {
 		next(data)
 		return
@@ -42,7 +35,6 @@ export const updatePostImage = async (
 	next: NextFunction,
 ) => {
 	const { file } = req
-	const { fileUrl } = req as unknown as RequestFilePayload
 	const { postImageId } = req.params
 	if (!file) {
 		const error = new AppError(
@@ -52,11 +44,7 @@ export const updatePostImage = async (
 		next(error)
 		return
 	}
-	const data = await postImageService.updatePostImage(
-		postImageId,
-		file,
-		fileUrl,
-	)
+	const data = await postImageService.updatePostImage(postImageId, file)
 	if (data instanceof AppError) {
 		next(data)
 		return
@@ -76,22 +64,4 @@ export const deletePostImage = async (
 		return
 	}
 	ResponseHandler.ok(res, data, MESSAGE.SUCCESS.DELETED.POST_IMAGE)
-}
-
-export const getPostImage = async (
-	req: Request,
-	res: Response,
-	next: NextFunction,
-) => {
-	const { filename } = req.params
-	const filePath = path.join(
-		__dirname,
-		'..',
-		'..',
-		'..',
-		DIRECTORY_NAME.BASE,
-		DIRECTORY_NAME.POST,
-		filename,
-	)
-	res.sendFile(filePath)
 }

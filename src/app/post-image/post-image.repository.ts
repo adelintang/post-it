@@ -6,9 +6,9 @@ export const createPostImage = async (postImage: ICreatePostImage) => {
 	return db.postImage.create({
 		data: {
 			id: `post-image-${generateUUID()}`,
+			public_id: postImage.public_id,
 			file_url: postImage.file_url,
 			filename: postImage.filename,
-			path: postImage.path,
 			size: postImage.size,
 			post_id: postImage.post_id,
 		},
