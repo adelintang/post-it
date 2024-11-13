@@ -25,7 +25,7 @@ export const swaggerDocument: OpenAPIV3.Document = {
 	servers: [
 		{
 			url: `${HOST}:${PORT}`,
-			description: 'Internal server for development',
+			description: 'Internal Server API',
 		},
 	],
 	components: {
