@@ -5,7 +5,6 @@ import {
 	customRequestBodyWithFile,
 	customResponse,
 	EXAMPLE_RESPONSE,
-	TypeFile,
 } from '../utils'
 
 export const profileImagePath: OpenAPIV3.PathsObject = {
@@ -58,32 +57,6 @@ export const profileImagePath: OpenAPIV3.PathsObject = {
 			],
 			responses: {
 				'200': customResponse('OK', EXAMPLE_RESPONSE.PROFILE_IMAGE_DELETED),
-			},
-		},
-	},
-	'/profiles/files/{filename}': {
-		get: {
-			tags: ['Profile Image'],
-			summary: 'Endpoint for get profile image',
-			security: [{ bearerAuth: [] }],
-			parameters: [
-				customParameter('path', 'filename', 'Filename from profile image'),
-			],
-			responses: {
-				'200': {
-					description: 'OK',
-					content: {
-						'image/jpeg': {
-							schema: TypeFile,
-						},
-						'image/jpg': {
-							schema: TypeFile,
-						},
-						'image/png': {
-							schema: TypeFile,
-						},
-					},
-				},
 			},
 		},
 	},
