@@ -143,9 +143,9 @@ exports.Prisma.ProfileScalarFieldEnum = {
 
 exports.Prisma.ProfileImageScalarFieldEnum = {
   id: 'id',
+  public_id: 'public_id',
   file_url: 'file_url',
   filename: 'filename',
-  path: 'path',
   size: 'size',
   created_at: 'created_at',
   updated_at: 'updated_at',
@@ -170,9 +170,9 @@ exports.Prisma.PostScalarFieldEnum = {
 
 exports.Prisma.PostImageScalarFieldEnum = {
   id: 'id',
+  public_id: 'public_id',
   file_url: 'file_url',
   filename: 'filename',
-  path: 'path',
   size: 'size',
   created_at: 'created_at',
   updated_at: 'updated_at',

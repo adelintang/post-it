@@ -3681,9 +3681,9 @@ export namespace Prisma {
 
   export type ProfileImageMinAggregateOutputType = {
     id: string | null
+    public_id: string | null
     file_url: string | null
     filename: string | null
-    path: string | null
     size: number | null
     created_at: Date | null
     updated_at: Date | null
@@ -3692,9 +3692,9 @@ export namespace Prisma {
 
   export type ProfileImageMaxAggregateOutputType = {
     id: string | null
+    public_id: string | null
     file_url: string | null
     filename: string | null
-    path: string | null
     size: number | null
     created_at: Date | null
     updated_at: Date | null
@@ -3703,9 +3703,9 @@ export namespace Prisma {
 
   export type ProfileImageCountAggregateOutputType = {
     id: number
+    public_id: number
     file_url: number
     filename: number
-    path: number
     size: number
     created_at: number
     updated_at: number
@@ -3724,9 +3724,9 @@ export namespace Prisma {
 
   export type ProfileImageMinAggregateInputType = {
     id?: true
+    public_id?: true
     file_url?: true
     filename?: true
-    path?: true
     size?: true
     created_at?: true
     updated_at?: true
@@ -3735,9 +3735,9 @@ export namespace Prisma {
 
   export type ProfileImageMaxAggregateInputType = {
     id?: true
+    public_id?: true
     file_url?: true
     filename?: true
-    path?: true
     size?: true
     created_at?: true
     updated_at?: true
@@ -3746,9 +3746,9 @@ export namespace Prisma {
 
   export type ProfileImageCountAggregateInputType = {
     id?: true
+    public_id?: true
     file_url?: true
     filename?: true
-    path?: true
     size?: true
     created_at?: true
     updated_at?: true
@@ -3844,9 +3844,9 @@ export namespace Prisma {
 
   export type ProfileImageGroupByOutputType = {
     id: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at: Date
     updated_at: Date
@@ -3874,9 +3874,9 @@ export namespace Prisma {
 
   export type ProfileImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    public_id?: boolean
     file_url?: boolean
     filename?: boolean
-    path?: boolean
     size?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3886,9 +3886,9 @@ export namespace Prisma {
 
   export type ProfileImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    public_id?: boolean
     file_url?: boolean
     filename?: boolean
-    path?: boolean
     size?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3898,9 +3898,9 @@ export namespace Prisma {
 
   export type ProfileImageSelectScalar = {
     id?: boolean
+    public_id?: boolean
     file_url?: boolean
     filename?: boolean
-    path?: boolean
     size?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3921,9 +3921,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      public_id: string
       file_url: string
       filename: string
-      path: string
       size: number
       created_at: Date
       updated_at: Date
@@ -4323,9 +4323,9 @@ export namespace Prisma {
    */ 
   interface ProfileImageFieldRefs {
     readonly id: FieldRef<"ProfileImage", 'String'>
+    readonly public_id: FieldRef<"ProfileImage", 'String'>
     readonly file_url: FieldRef<"ProfileImage", 'String'>
     readonly filename: FieldRef<"ProfileImage", 'String'>
-    readonly path: FieldRef<"ProfileImage", 'String'>
     readonly size: FieldRef<"ProfileImage", 'Int'>
     readonly created_at: FieldRef<"ProfileImage", 'DateTime'>
     readonly updated_at: FieldRef<"ProfileImage", 'DateTime'>
@@ -6625,9 +6625,9 @@ export namespace Prisma {
 
   export type PostImageMinAggregateOutputType = {
     id: string | null
+    public_id: string | null
     file_url: string | null
     filename: string | null
-    path: string | null
     size: number | null
     created_at: Date | null
     updated_at: Date | null
@@ -6636,9 +6636,9 @@ export namespace Prisma {
 
   export type PostImageMaxAggregateOutputType = {
     id: string | null
+    public_id: string | null
     file_url: string | null
     filename: string | null
-    path: string | null
     size: number | null
     created_at: Date | null
     updated_at: Date | null
@@ -6647,9 +6647,9 @@ export namespace Prisma {
 
   export type PostImageCountAggregateOutputType = {
     id: number
+    public_id: number
     file_url: number
     filename: number
-    path: number
     size: number
     created_at: number
     updated_at: number
@@ -6668,9 +6668,9 @@ export namespace Prisma {
 
   export type PostImageMinAggregateInputType = {
     id?: true
+    public_id?: true
     file_url?: true
     filename?: true
-    path?: true
     size?: true
     created_at?: true
     updated_at?: true
@@ -6679,9 +6679,9 @@ export namespace Prisma {
 
   export type PostImageMaxAggregateInputType = {
     id?: true
+    public_id?: true
     file_url?: true
     filename?: true
-    path?: true
     size?: true
     created_at?: true
     updated_at?: true
@@ -6690,9 +6690,9 @@ export namespace Prisma {
 
   export type PostImageCountAggregateInputType = {
     id?: true
+    public_id?: true
     file_url?: true
     filename?: true
-    path?: true
     size?: true
     created_at?: true
     updated_at?: true
@@ -6788,9 +6788,9 @@ export namespace Prisma {
 
   export type PostImageGroupByOutputType = {
     id: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at: Date
     updated_at: Date
@@ -6818,9 +6818,9 @@ export namespace Prisma {
 
   export type PostImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    public_id?: boolean
     file_url?: boolean
     filename?: boolean
-    path?: boolean
     size?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -6830,9 +6830,9 @@ export namespace Prisma {
 
   export type PostImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    public_id?: boolean
     file_url?: boolean
     filename?: boolean
-    path?: boolean
     size?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -6842,9 +6842,9 @@ export namespace Prisma {
 
   export type PostImageSelectScalar = {
     id?: boolean
+    public_id?: boolean
     file_url?: boolean
     filename?: boolean
-    path?: boolean
     size?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -6865,9 +6865,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      public_id: string
       file_url: string
       filename: string
-      path: string
       size: number
       created_at: Date
       updated_at: Date
@@ -7267,9 +7267,9 @@ export namespace Prisma {
    */ 
   interface PostImageFieldRefs {
     readonly id: FieldRef<"PostImage", 'String'>
+    readonly public_id: FieldRef<"PostImage", 'String'>
     readonly file_url: FieldRef<"PostImage", 'String'>
     readonly filename: FieldRef<"PostImage", 'String'>
-    readonly path: FieldRef<"PostImage", 'String'>
     readonly size: FieldRef<"PostImage", 'Int'>
     readonly created_at: FieldRef<"PostImage", 'DateTime'>
     readonly updated_at: FieldRef<"PostImage", 'DateTime'>
@@ -9644,9 +9644,9 @@ export namespace Prisma {
 
   export const ProfileImageScalarFieldEnum: {
     id: 'id',
+    public_id: 'public_id',
     file_url: 'file_url',
     filename: 'filename',
-    path: 'path',
     size: 'size',
     created_at: 'created_at',
     updated_at: 'updated_at',
@@ -9680,9 +9680,9 @@ export namespace Prisma {
 
   export const PostImageScalarFieldEnum: {
     id: 'id',
+    public_id: 'public_id',
     file_url: 'file_url',
     filename: 'filename',
-    path: 'path',
     size: 'size',
     created_at: 'created_at',
     updated_at: 'updated_at',
@@ -9965,9 +9965,9 @@ export namespace Prisma {
     OR?: ProfileImageWhereInput[]
     NOT?: ProfileImageWhereInput | ProfileImageWhereInput[]
     id?: StringFilter<"ProfileImage"> | string
+    public_id?: StringFilter<"ProfileImage"> | string
     file_url?: StringFilter<"ProfileImage"> | string
     filename?: StringFilter<"ProfileImage"> | string
-    path?: StringFilter<"ProfileImage"> | string
     size?: IntFilter<"ProfileImage"> | number
     created_at?: DateTimeFilter<"ProfileImage"> | Date | string
     updated_at?: DateTimeFilter<"ProfileImage"> | Date | string
@@ -9977,9 +9977,9 @@ export namespace Prisma {
 
   export type ProfileImageOrderByWithRelationInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9993,9 +9993,9 @@ export namespace Prisma {
     AND?: ProfileImageWhereInput | ProfileImageWhereInput[]
     OR?: ProfileImageWhereInput[]
     NOT?: ProfileImageWhereInput | ProfileImageWhereInput[]
+    public_id?: StringFilter<"ProfileImage"> | string
     file_url?: StringFilter<"ProfileImage"> | string
     filename?: StringFilter<"ProfileImage"> | string
-    path?: StringFilter<"ProfileImage"> | string
     size?: IntFilter<"ProfileImage"> | number
     created_at?: DateTimeFilter<"ProfileImage"> | Date | string
     updated_at?: DateTimeFilter<"ProfileImage"> | Date | string
@@ -10004,9 +10004,9 @@ export namespace Prisma {
 
   export type ProfileImageOrderByWithAggregationInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -10023,9 +10023,9 @@ export namespace Prisma {
     OR?: ProfileImageScalarWhereWithAggregatesInput[]
     NOT?: ProfileImageScalarWhereWithAggregatesInput | ProfileImageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"ProfileImage"> | string
+    public_id?: StringWithAggregatesFilter<"ProfileImage"> | string
     file_url?: StringWithAggregatesFilter<"ProfileImage"> | string
     filename?: StringWithAggregatesFilter<"ProfileImage"> | string
-    path?: StringWithAggregatesFilter<"ProfileImage"> | string
     size?: IntWithAggregatesFilter<"ProfileImage"> | number
     created_at?: DateTimeWithAggregatesFilter<"ProfileImage"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"ProfileImage"> | Date | string
@@ -10160,9 +10160,9 @@ export namespace Prisma {
     OR?: PostImageWhereInput[]
     NOT?: PostImageWhereInput | PostImageWhereInput[]
     id?: StringFilter<"PostImage"> | string
+    public_id?: StringFilter<"PostImage"> | string
     file_url?: StringFilter<"PostImage"> | string
     filename?: StringFilter<"PostImage"> | string
-    path?: StringFilter<"PostImage"> | string
     size?: IntFilter<"PostImage"> | number
     created_at?: DateTimeFilter<"PostImage"> | Date | string
     updated_at?: DateTimeFilter<"PostImage"> | Date | string
@@ -10172,9 +10172,9 @@ export namespace Prisma {
 
   export type PostImageOrderByWithRelationInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -10188,9 +10188,9 @@ export namespace Prisma {
     AND?: PostImageWhereInput | PostImageWhereInput[]
     OR?: PostImageWhereInput[]
     NOT?: PostImageWhereInput | PostImageWhereInput[]
+    public_id?: StringFilter<"PostImage"> | string
     file_url?: StringFilter<"PostImage"> | string
     filename?: StringFilter<"PostImage"> | string
-    path?: StringFilter<"PostImage"> | string
     size?: IntFilter<"PostImage"> | number
     created_at?: DateTimeFilter<"PostImage"> | Date | string
     updated_at?: DateTimeFilter<"PostImage"> | Date | string
@@ -10199,9 +10199,9 @@ export namespace Prisma {
 
   export type PostImageOrderByWithAggregationInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -10218,9 +10218,9 @@ export namespace Prisma {
     OR?: PostImageScalarWhereWithAggregatesInput[]
     NOT?: PostImageScalarWhereWithAggregatesInput | PostImageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PostImage"> | string
+    public_id?: StringWithAggregatesFilter<"PostImage"> | string
     file_url?: StringWithAggregatesFilter<"PostImage"> | string
     filename?: StringWithAggregatesFilter<"PostImage"> | string
-    path?: StringWithAggregatesFilter<"PostImage"> | string
     size?: IntWithAggregatesFilter<"PostImage"> | number
     created_at?: DateTimeWithAggregatesFilter<"PostImage"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"PostImage"> | Date | string
@@ -10523,9 +10523,9 @@ export namespace Prisma {
 
   export type ProfileImageCreateInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -10534,9 +10534,9 @@ export namespace Prisma {
 
   export type ProfileImageUncheckedCreateInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -10545,9 +10545,9 @@ export namespace Prisma {
 
   export type ProfileImageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10556,9 +10556,9 @@ export namespace Prisma {
 
   export type ProfileImageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10567,9 +10567,9 @@ export namespace Prisma {
 
   export type ProfileImageCreateManyInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -10578,9 +10578,9 @@ export namespace Prisma {
 
   export type ProfileImageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10588,9 +10588,9 @@ export namespace Prisma {
 
   export type ProfileImageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10720,9 +10720,9 @@ export namespace Prisma {
 
   export type PostImageCreateInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -10731,9 +10731,9 @@ export namespace Prisma {
 
   export type PostImageUncheckedCreateInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -10742,9 +10742,9 @@ export namespace Prisma {
 
   export type PostImageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10753,9 +10753,9 @@ export namespace Prisma {
 
   export type PostImageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10764,9 +10764,9 @@ export namespace Prisma {
 
   export type PostImageCreateManyInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -10775,9 +10775,9 @@ export namespace Prisma {
 
   export type PostImageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10785,9 +10785,9 @@ export namespace Prisma {
 
   export type PostImageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11120,9 +11120,9 @@ export namespace Prisma {
 
   export type ProfileImageCountOrderByAggregateInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -11135,9 +11135,9 @@ export namespace Prisma {
 
   export type ProfileImageMaxOrderByAggregateInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -11146,9 +11146,9 @@ export namespace Prisma {
 
   export type ProfileImageMinOrderByAggregateInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -11240,9 +11240,9 @@ export namespace Prisma {
 
   export type PostImageCountOrderByAggregateInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -11255,9 +11255,9 @@ export namespace Prisma {
 
   export type PostImageMaxOrderByAggregateInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -11266,9 +11266,9 @@ export namespace Prisma {
 
   export type PostImageMinOrderByAggregateInput = {
     id?: SortOrder
+    public_id?: SortOrder
     file_url?: SortOrder
     filename?: SortOrder
-    path?: SortOrder
     size?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -12555,9 +12555,9 @@ export namespace Prisma {
 
   export type ProfileImageCreateWithoutProfileInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -12565,9 +12565,9 @@ export namespace Prisma {
 
   export type ProfileImageUncheckedCreateWithoutProfileInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -12632,9 +12632,9 @@ export namespace Prisma {
 
   export type ProfileImageUpdateWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12642,9 +12642,9 @@ export namespace Prisma {
 
   export type ProfileImageUncheckedUpdateWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12945,9 +12945,9 @@ export namespace Prisma {
 
   export type PostImageCreateWithoutPostInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -12955,9 +12955,9 @@ export namespace Prisma {
 
   export type PostImageUncheckedCreateWithoutPostInput = {
     id?: string
+    public_id: string
     file_url: string
     filename: string
-    path: string
     size: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -13054,9 +13054,9 @@ export namespace Prisma {
 
   export type PostImageUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13064,9 +13064,9 @@ export namespace Prisma {
 
   export type PostImageUncheckedUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
     file_url?: StringFieldUpdateOperationsInput | string
     filename?: StringFieldUpdateOperationsInput | string
-    path?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
