@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "rm -rf dist && npx tsc && cp -r src/prisma dist/prisma",
-    "start": "node dist/index.js",
+    "start": "npx tsc -w",
     "dev": "nodemon --exec node -r @swc-node/register src/index.ts",
     "type-check": "tsc --noEmit --watch",
     "lint": "eslint . --ext .ts",
