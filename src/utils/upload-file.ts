@@ -1,14 +1,7 @@
-import fs from 'fs/promises'
-import path from 'path'
-
 import type { Request } from 'express'
 import multer, { type FileFilterCallback } from 'multer'
 
-import {
-	DIRECTORY_NAME,
-	ERROR_CODE,
-	type RequestFilePayload,
-} from '../interface'
+import { ERROR_CODE } from '../interface'
 import { AppError } from '../middleware'
 
 import { MESSAGE } from './messages'
@@ -19,24 +12,11 @@ const FILE_TYPE_MAP: Record<string, string> = {
 	'image/png': '.png',
 }
 
-export const storageConfig = (directory: string) => {
-	const storage = multer.diskStorage({
-		destination(req, file, callback) {
-			callback(
-				null,
-				path.join(__dirname, '..', '..', DIRECTORY_NAME.BASE, directory),
-			)
-		},
-		filename(req: Request, file: Express.Multer.File, callback) {
-			const ext = path.extname(file.originalname)
-			const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`
-			const formatFilename = `${file.fieldname}-${uniqueSuffix}${ext}`
-			;(req as unknown as RequestFilePayload).fileUrl = formatFilename
-			callback(null, formatFilename)
-		},
-	})
-	return storage
-}
+export const storage = multer.diskStorage({
+	filename(req: Request, file: Express.Multer.File, callback) {
+		callback(null, file.originalname)
+	},
+})
 
 const fileFilter = (
 	req: Request,
@@ -56,22 +36,10 @@ const fileFilter = (
 	}
 }
 
-export const uploadConfig = (storage: multer.StorageEngine) => {
-	const config = multer({
-		storage,
-		fileFilter,
-		limits: {
-			fileSize: 1024 * 1024 * 2,
-		},
-	})
-	return config
-}
-
-export const deleteFile = async (path: string) => {
-	try {
-		await fs.unlink(path)
-		console.log(`File ${path} deleted.`)
-	} catch (err: any) {
-		return new AppError(ERROR_CODE.INTERNAL_SERVER_ERROR.code, err.message)
-	}
-}
+export const upload = multer({
+	storage,
+	fileFilter,
+	limits: {
+		fileSize: 1024 * 1024 * 2,
+	},
+})

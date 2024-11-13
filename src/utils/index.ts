@@ -10,6 +10,7 @@ export * from './upload-file'
 export * from './handle-prisma-error'
 export * from './catch-async'
 export * from './rate-limit'
+export * from './cloudinary'
 export const generateUUID = () => {
 	return uuidv4()
 }
