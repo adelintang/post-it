@@ -9,9 +9,9 @@ export const createProfileImage = async (profileImage: ICreateProfileImage) => {
 	return db.profileImage.create({
 		data: {
 			id: `profile-image-${generateUUID()}`,
+			public_id: profileImage.public_id,
 			file_url: profileImage.file_url,
 			filename: profileImage.filename,
-			path: profileImage.path,
 			size: profileImage.size,
 			profile_id: profileImage.profile_id,
 		},

@@ -1,11 +1,11 @@
 export interface IUpdateProfileImage {
 	file_url: string
 	filename: string
-	path: string
 	size: number
 }
 
 export interface ICreateProfileImage extends IUpdateProfileImage {
+	public_id: string
 	profile_id: string
 }
 

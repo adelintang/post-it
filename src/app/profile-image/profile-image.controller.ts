@@ -1,12 +1,6 @@
-import path from 'path'
-
 import type { Request, Response, NextFunction } from 'express'
 
-import {
-	ERROR_CODE,
-	DIRECTORY_NAME,
-	type RequestFilePayload,
-} from '../../interface'
+import { ERROR_CODE } from '../../interface'
 import { AppError } from '../../middleware'
 import { MESSAGE, ResponseHandler } from '../../utils'
 
@@ -18,7 +12,6 @@ export const createProfileImage = async (
 	next: NextFunction,
 ) => {
 	const { file } = req
-	const { fileUrl } = req as unknown as RequestFilePayload
 	const { profileId } = req.params
 	if (!file) {
 		const error = new AppError(
@@ -28,11 +21,7 @@ export const createProfileImage = async (
 		next(error)
 		return
 	}
-	const data = await profileImageService.createProfileImage(
-		profileId,
-		file,
-		fileUrl,
-	)
+	const data = await profileImageService.createProfileImage(profileId, file)
 	if (data instanceof AppError) {
 		next(data)
 		return
@@ -46,7 +35,6 @@ export const updateProfileImage = async (
 	next: NextFunction,
 ) => {
 	const { file } = req
-	const { fileUrl } = req as unknown as RequestFilePayload
 	const { profileImageId } = req.params
 	if (!file) {
 		const error = new AppError(
@@ -59,7 +47,6 @@ export const updateProfileImage = async (
 	const data = await profileImageService.updateProfileImage(
 		profileImageId,
 		file,
-		fileUrl,
 	)
 	if (data instanceof AppError) {
 		next(data)
@@ -80,23 +67,4 @@ export const deleteProfileImage = async (
 		return
 	}
 	ResponseHandler.ok(res, data, MESSAGE.SUCCESS.DELETED.PROFILE_IMAGE)
-}
-
-export const getProfileImage = async (
-	req: Request,
-	res: Response,
-	next: NextFunction,
-) => {
-	const { filename } = req.params
-	const filePath = path.join(
-		__dirname,
-		'..',
-		'..',
-		'..',
-		DIRECTORY_NAME.BASE,
-		DIRECTORY_NAME.PROFILE,
-		filename,
-	)
-
-	res.sendFile(filePath)
 }
