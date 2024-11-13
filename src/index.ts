@@ -20,7 +20,13 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 
 if (process.env.NODE_ENV === 'development') {
-	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+	const CSS_URL =
+		'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
+	app.use(
+		'/docs',
+		swaggerUi.serve,
+		swaggerUi.setup(swaggerDocument, { customCssUrl: CSS_URL }),
+	)
 	console.log(`Swagger docs is enabled at ${HOST}:${PORT}/docs`)
 }
 
