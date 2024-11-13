@@ -18,7 +18,7 @@ route.use('/posts', authentication, postRoute)
 route.use('/comments', authentication, commentRoute)
 
 route.get('/', (req: Request, res: Response) => {
-	ResponseHandler.ok(res, null, 'Welcome to Template Api')
+	ResponseHandler.ok(res, null, 'Welcome to Post It Api')
 })
 
 route.use('*', (req: Request, res: Response, next: NextFunction) => {

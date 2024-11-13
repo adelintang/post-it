@@ -4,6 +4,7 @@ import express from 'express'
 import 'dotenv/config'
 import morgan from 'morgan'
 import swaggerUi from 'swagger-ui-express'
+import swaggerJsDoc from 'swagger-jsdoc'
 
 import { errorHandler } from './middleware'
 import routes from './routes'
@@ -22,10 +23,14 @@ app.use(morgan('tiny'))
 if (process.env.NODE_ENV === 'development') {
 	const CSS_URL =
 		'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
+	const specs = swaggerJsDoc({
+		definition: { ...swaggerDocument },
+		apis: ['src/routes/*.ts'],
+	})
 	app.use(
 		'/docs',
 		swaggerUi.serve,
-		swaggerUi.setup(swaggerDocument, { customCssUrl: CSS_URL }),
+		swaggerUi.setup(specs, { customCssUrl: CSS_URL }),
 	)
 	console.log(`Swagger docs is enabled at ${HOST}:${PORT}/docs`)
 }
