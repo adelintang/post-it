@@ -17,7 +17,7 @@ const HOST = process.env.HOST ?? 'http://localhost'
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
-app.use(morgan('dev'))
+app.use(morgan('tiny'))
 
 if (process.env.NODE_ENV === 'development') {
 	const CSS_URL =
