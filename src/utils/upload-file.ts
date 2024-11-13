@@ -12,7 +12,7 @@ const FILE_TYPE_MAP: Record<string, string> = {
 	'image/png': '.png',
 }
 
-export const storage = multer.diskStorage({
+const storage = multer.diskStorage({
 	filename(req: Request, file: Express.Multer.File, callback) {
 		callback(null, file.originalname)
 	},
