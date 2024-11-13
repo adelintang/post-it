@@ -6,7 +6,7 @@ The mini social media including simple feature implemented like authentication, 
 ## How to use this project
 
 ### 1. Clone this repository
-`https://github.com/adelintang/repo-name.git`
+`https://github.com/adelintang/post-it.git`
 
 ### 2. Install Package
 `yarn install | npm i`
