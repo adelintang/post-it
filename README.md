@@ -1,6 +1,8 @@
 ## PostIt
 The mini social media including simple feature implemented like authentication, profile, follow unfollow, posting, comment and like.
 
+[read the docs api](https://api-post-it.vercel.app/docs)
+
 **Tech Stack** : Express, Typescript, Prisma, PostgreSQL.
 
 ## How to use this project.
