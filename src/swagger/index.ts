@@ -1,3 +1,6 @@
+import fs from 'fs'
+import path from 'path'
+
 import { type OpenAPIV3 } from 'openapi-types'
 
 import {
@@ -63,3 +66,7 @@ export const swaggerDocument: OpenAPIV3.Document = {
 		...likePath,
 	},
 }
+
+const outputPath = path.resolve(__dirname, '../public/swagger.json')
+fs.writeFileSync(outputPath, JSON.stringify(swaggerDocument, null, 2))
+console.log(`Swagger JSON generated at ${outputPath}`)

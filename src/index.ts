@@ -1,13 +1,15 @@
+import path from 'path'
+
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
 import 'dotenv/config'
 import morgan from 'morgan'
-import swaggerUi from 'swagger-ui-express'
+// import swaggerUi from 'swagger-ui-express'
 
 import { errorHandler } from './middleware'
 import routes from './routes'
-import { swaggerDocument } from './swagger'
+// import { swaggerDocument } from './swagger'
 import { limiter } from './utils'
 
 const app = express()
@@ -19,19 +21,15 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(morgan('tiny'))
 
-if (process.env.NODE_ENV === 'development') {
-	app.use(
-		'/docs',
-		swaggerUi.serve,
-		swaggerUi.setup(swaggerDocument, {
-			customJs:
-				'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
-			customCssUrl:
-				'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
-		}),
-	)
-	console.log(`Swagger docs is enabled at ${HOST}:${PORT}/docs`)
-}
+// if (process.env.NODE_ENV === 'development') {
+// 	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+// 	console.log(`Swagger docs is enabled at ${HOST}:${PORT}/docs`)
+// }
+
+app.use(express.static(path.join(__dirname, '/public')))
+app.get('/docs', (req, res) => {
+	res.sendFile(path.join(__dirname, '/public/swagger.html'))
+})
 
 app.use(limiter)
 app.use(routes)

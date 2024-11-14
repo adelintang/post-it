@@ -1,0 +1,2225 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Post It API Documentation",
+    "description": "Documentation for all endpoint are you need to read",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Internal Server API"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Endpoints related to Authentication"
+    },
+    {
+      "name": "User",
+      "description": "Endpoints related to User"
+    },
+    {
+      "name": "Profile",
+      "description": "Endpoints related to Profile"
+    },
+    {
+      "name": "Profile Image",
+      "description": "Endpoints related to Profile Image"
+    },
+    {
+      "name": "Follow",
+      "description": "Endpoints related to Follow"
+    },
+    {
+      "name": "Post",
+      "description": "Endpoints related to Post"
+    },
+    {
+      "name": "Post Image",
+      "description": "Endpoints related to Post Image"
+    },
+    {
+      "name": "Comment",
+      "description": "Endpoints related to Comment"
+    },
+    {
+      "name": "Like",
+      "description": "Endpoints related to Like"
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Endpoint for create user account",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]*$",
+                    "minLength": 6
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8
+                  },
+                  "role": {
+                    "enum": [
+                      "ADMIN",
+                      "USER"
+                    ]
+                  }
+                },
+                "required": [
+                  "username",
+                  "email",
+                  "password",
+                  "role"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "User registed successfully",
+                    "data": {
+                      "id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "username": "johndoe",
+                      "email": "johndoe@gmail.com",
+                      "role": "USER"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Endpoint for user authenticate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "User login successfully",
+                    "data": {
+                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/refresh-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Endpoint for get new Access Token",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "refreshToken",
+            "description": "refresh token needed for generating new access token",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Access token created successfully",
+                    "data": {
+                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "delete": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Endpoint for logout",
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "refreshToken",
+            "description": "Delete refresh token for logout",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6.eyJ1c2VySWQiOiJ1c2VyLTI3ZTUzYjhkLWRjM2MtNDZhMy1hZTNiLTUyYTE2N2UzNzAxZSI.Q-qzrjZ-OurXdrgLBVOnMwbJi1ookcnp"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Endpoint for get all user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Search user by username",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Users fetch successfully",
+                    "data": [
+                      {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes",
+                        "profile": {
+                          "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                          "fullname": "Johanes Alexandra",
+                          "profile_image": {
+                            "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                            "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                          }
+                        }
+                      }
+                    ],
+                    "meta": {
+                      "currentPage": 1,
+                      "perPage": 10,
+                      "totalCurrentPage": 1,
+                      "totalPage": 1,
+                      "totalData": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profiles": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Endpoint for create profile",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullname": {
+                    "type": "string",
+                    "minLength": 6
+                  },
+                  "bio": {
+                    "type": "string",
+                    "minLength": 6
+                  },
+                  "user_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "fullname",
+                  "bio",
+                  "user_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Profile created successfully",
+                    "data": {
+                      "id": "profile-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                      "bio": "I'am Student",
+                      "fullname": "John Doe",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profiles/{profileId}": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Endpoint for get profile",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "Unique id from profile",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Profile fetch successfully",
+                    "data": {
+                      "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                      "fullname": "Johanes Alexandra",
+                      "bio": "I'am Student and i'am exiceted learn web dev",
+                      "user": {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes"
+                      },
+                      "profile_image": {
+                        "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                        "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Endpoint for update profile",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "Unique id from profile",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullname": {
+                    "type": "string",
+                    "minLength": 6
+                  },
+                  "bio": {
+                    "type": "string",
+                    "minLength": 6
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Profile updated successfully",
+                    "data": {
+                      "id": "profile-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                      "bio": "I'am Student",
+                      "fullname": "John Doe",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profiles/files/{profileId}/upload": {
+      "post": {
+        "tags": [
+          "Profile Image"
+        ],
+        "summary": "Endpoint for upload profile image",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "description": "Unique id from profile",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Profile image uploaded successfully",
+                    "data": {
+                      "id": "profile-image-14874ca4-d7a7-4f71-a927-e1f2bc5fc55e",
+                      "file_url": "http://localhost:3000/profiles/files/file-1731341046422-455151246.jpg",
+                      "filename": "file-1731341046422-455151246.jpg",
+                      "size": 6572,
+                      "profile_id": "profile-5128f16a-68e5-4b40-b1b8-d28a691d84da"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profiles/files/{profileImageId}/upload": {
+      "patch": {
+        "tags": [
+          "Profile Image"
+        ],
+        "summary": "Endpoint for update profile image",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileImageId",
+            "description": "Unique id from profile image",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Profile image updated successfully",
+                    "data": {
+                      "id": "profile-image-14874ca4-d7a7-4f71-a927-e1f2bc5fc55e",
+                      "file_url": "http://localhost:3000/profiles/files/file-1731341046422-455151246.jpg",
+                      "filename": "file-1731341046422-455151246.jpg",
+                      "size": 6572,
+                      "profile_id": "profile-5128f16a-68e5-4b40-b1b8-d28a691d84da"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profiles/files/{profileImageId}": {
+      "delete": {
+        "tags": [
+          "Profile Image"
+        ],
+        "summary": "Endpoint for delete profile image",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileImageId",
+            "description": "Unique id from profile image",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Profile image deleted successfully",
+                    "data": {
+                      "id": "profile-image-14874ca4-d7a7-4f71-a927-e1f2bc5fc55e",
+                      "profile_id": "profile-5128f16a-68e5-4b40-b1b8-d28a691d84da"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/follow": {
+      "post": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Endpoint for following other user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "follower_id": {
+                    "type": "string"
+                  },
+                  "following_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "follower_id",
+                  "following_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Following user successfully",
+                    "data": {
+                      "id": "follow-ea643e17-326d-4d17-9b52-8751cc3321e2",
+                      "follower_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "following_id": "user-d5771ab9-25ae-4861-aa3a-f026541f0496",
+                      "created_at": "2024-11-11T16:29:09.492Z",
+                      "updated_at": "2024-11-11T16:29:09.492Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/unfollow": {
+      "delete": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Endpoint for unfollowing other user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "follower_id": {
+                    "type": "string"
+                  },
+                  "following_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "follower_id",
+                  "following_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Unfollow user successfully",
+                    "data": {
+                      "id": "follow-ea643e17-326d-4d17-9b52-8751cc3321e2",
+                      "follower_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "following_id": "user-d5771ab9-25ae-4861-aa3a-f026541f0496",
+                      "created_at": "2024-11-11T16:29:09.492Z",
+                      "updated_at": "2024-11-11T16:29:09.492Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/followers/{userId}": {
+      "get": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Endpoint for get followers user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "Unique id from user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Search by username",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Followers fetched successfully",
+                    "data": [
+                      {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes",
+                        "profile": {
+                          "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                          "fullname": "Johanes Alexandra",
+                          "profile_image": {
+                            "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                            "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/followings/{userId}": {
+      "get": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Endpoint for get following user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "Unique id from user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Search by username",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Followings fetched successfully",
+                    "data": [
+                      {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes",
+                        "profile": {
+                          "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                          "fullname": "Johanes Alexandra",
+                          "profile_image": {
+                            "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                            "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/follows/count/{userId}": {
+      "get": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Endpoint for get all follower and follower user count",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "Unique id from user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Follower and following count fetched successfully",
+                    "data": {
+                      "followers": 0,
+                      "followings": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "post": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Endpoint for create post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "content",
+                  "user_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post created successfully",
+                    "data": {
+                      "id": "post-1d6c87c5-c655-496d-8163-d3cba16f1877",
+                      "content": "Time to traveling",
+                      "created_at": "2024-11-11T17:24:29.184Z",
+                      "updated_at": "2024-11-11T17:24:29.184Z",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Endpoint for get all post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Search by content",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Posts fetch successfully",
+                    "data": [
+                      {
+                        "id": "post-1d6c87c5-c655-496d-8163-d3cba16f1877",
+                        "content": "Time to traveling",
+                        "created_at": "2024-11-11T17:24:29.184Z",
+                        "updated_at": "2024-11-11T17:24:29.184Z",
+                        "user": {
+                          "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                          "username": "johanes",
+                          "profile": {
+                            "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                            "fullname": "Johanes Alexandra",
+                            "profile_image": {
+                              "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                              "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                            }
+                          }
+                        },
+                        "post_image": {
+                          "id": "post-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                          "file_url": "http://localhost:3000/posts/files/file-1730907730863-7415028.jpg"
+                        },
+                        "likesCount": 0,
+                        "commentsCount": 0
+                      }
+                    ],
+                    "meta": {
+                      "currentPage": 1,
+                      "perPage": 10,
+                      "totalCurrentPage": 1,
+                      "totalPage": 1,
+                      "totalData": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/me": {
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Endpoint for get all my post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "My posts fetch successfully",
+                    "data": [
+                      {
+                        "id": "post-1d6c87c5-c655-496d-8163-d3cba16f1877",
+                        "content": "Time to traveling",
+                        "created_at": "2024-11-11T17:24:29.184Z",
+                        "updated_at": "2024-11-11T17:24:29.184Z",
+                        "user": {
+                          "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                          "username": "johanes",
+                          "profile": {
+                            "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                            "fullname": "Johanes Alexandra",
+                            "profile_image": {
+                              "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                              "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                            }
+                          }
+                        },
+                        "post_image": {
+                          "id": "post-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                          "file_url": "http://localhost:3000/posts/files/file-1730907730863-7415028.jpg"
+                        },
+                        "likesCount": 0,
+                        "commentsCount": 0
+                      }
+                    ],
+                    "meta": {
+                      "currentPage": 1,
+                      "perPage": 10,
+                      "totalCurrentPage": 1,
+                      "totalPage": 1,
+                      "totalData": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postId}": {
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Endpoint for get post by postId",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post fetch successfully",
+                    "data": {
+                      "id": "post-1d6c87c5-c655-496d-8163-d3cba16f1877",
+                      "content": "Time to traveling",
+                      "created_at": "2024-11-11T17:24:29.184Z",
+                      "updated_at": "2024-11-11T17:24:29.184Z",
+                      "user": {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes",
+                        "profile": {
+                          "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                          "fullname": "Johanes Alexandra",
+                          "profile_image": {
+                            "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                            "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                          }
+                        }
+                      },
+                      "post_image": {
+                        "id": "post-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                        "file_url": "http://localhost:3000/posts/files/file-1730907730863-7415028.jpg"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Endpoint for update post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post updated successfully",
+                    "data": {
+                      "id": "post-1d6c87c5-c655-496d-8163-d3cba16f1877",
+                      "content": "Time to traveling",
+                      "created_at": "2024-11-11T17:24:29.184Z",
+                      "updated_at": "2024-11-11T17:24:29.184Z",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Endpoint for delete post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post deleted successfully",
+                    "data": {
+                      "id": "post-1d6c87c5-c655-496d-8163-d3cba16f1877",
+                      "content": "Time to traveling",
+                      "created_at": "2024-11-11T17:24:29.184Z",
+                      "updated_at": "2024-11-11T17:24:29.184Z",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/files/{postId}/upload": {
+      "post": {
+        "tags": [
+          "Post Image"
+        ],
+        "summary": "Endpoint for upload post image",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post image uploaded successfully",
+                    "data": {
+                      "id": "post-image-07b2fb9b-897d-498b-af7a-9df62246ecea",
+                      "file_url": "http://localhost:3000/posts/files/file-1731349512917-710527355.jpg",
+                      "filename": "file-1731349512917-710527355.jpg",
+                      "size": 5667,
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/files/{postImageId}/upload": {
+      "patch": {
+        "tags": [
+          "Post Image"
+        ],
+        "summary": "Endpoint for update post image",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postImageId",
+            "description": "Unique id from post image",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post image updated successfully",
+                    "data": {
+                      "id": "post-image-07b2fb9b-897d-498b-af7a-9df62246ecea",
+                      "file_url": "http://localhost:3000/posts/files/file-1731349512917-710527355.jpg",
+                      "filename": "file-1731349512917-710527355.jpg",
+                      "size": 5667,
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/files/{postImageId}": {
+      "delete": {
+        "tags": [
+          "Post Image"
+        ],
+        "summary": "Endpoint for delete post image",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postImageId",
+            "description": "Unique id from post image",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Post image deleted successfully",
+                    "data": {
+                      "id": "post-image-07b2fb9b-897d-498b-af7a-9df62246ecea",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/comments": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for create comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "post_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "content",
+                  "user_id",
+                  "post_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Comment created successfully",
+                    "data": {
+                      "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                      "content": "This is beautiful mount",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf",
+                      "parent_id": null,
+                      "created_at": "2024-11-11T19:21:20.463Z",
+                      "updated_at": "2024-11-11T19:21:20.463Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postId}/comments": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for get all comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Comments fetched successfully",
+                    "data": [
+                      {
+                        "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                        "content": "This is beautiful mount",
+                        "created_at": "2024-11-11T19:21:20.463Z",
+                        "updated_at": "2024-11-11T19:21:20.463Z",
+                        "user": {
+                          "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                          "username": "johanes",
+                          "profile": {
+                            "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                            "fullname": "Johanes Alexandra",
+                            "profile_image": {
+                              "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                              "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                            }
+                          }
+                        },
+                        "likesCount": 0,
+                        "repliesCount": 0
+                      }
+                    ],
+                    "meta": {
+                      "currentPage": 1,
+                      "perPage": 10,
+                      "totalCurrentPage": 1,
+                      "totalPage": 1,
+                      "totalData": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{commentId}": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for get comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Comment fetched successfully",
+                    "data": {
+                      "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                      "content": "This is beautiful mount",
+                      "created_at": "2024-11-11T19:21:20.463Z",
+                      "updated_at": "2024-11-11T19:21:20.463Z",
+                      "user": {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes",
+                        "profile": {
+                          "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                          "fullname": "Johanes Alexandra",
+                          "profile_image": {
+                            "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                            "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for update comment or reply",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Comment updated successfully",
+                    "data": {
+                      "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                      "content": "This is beautiful mount",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf",
+                      "parent_id": null,
+                      "created_at": "2024-11-11T19:21:20.463Z",
+                      "updated_at": "2024-11-11T19:21:20.463Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for delete comment or reply",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Comment deleted successfully",
+                    "data": {
+                      "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                      "content": "This is beautiful mount",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf",
+                      "parent_id": null,
+                      "created_at": "2024-11-11T19:21:20.463Z",
+                      "updated_at": "2024-11-11T19:21:20.463Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/replies": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for create reply",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "post_id": {
+                    "type": "string"
+                  },
+                  "parent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "content",
+                  "user_id",
+                  "post_id",
+                  "parent_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Replies created successfully",
+                    "data": {
+                      "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                      "content": "Yes true!",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf",
+                      "parent_id": "comment-c7b1d717-4579-4890-82bb-cac8eeb9d215",
+                      "created_at": "2024-11-11T19:21:20.463Z",
+                      "updated_at": "2024-11-11T19:21:20.463Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{commentId}/replies": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Endpoint for get all reply",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Replies fetched successfully",
+                    "data": [
+                      {
+                        "id": "comment-e4171606-b443-42c9-8ac4-a848868daea2",
+                        "content": "Yes true!",
+                        "created_at": "2024-11-11T19:21:20.463Z",
+                        "updated_at": "2024-11-11T19:21:20.463Z",
+                        "user": {
+                          "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                          "username": "johanes",
+                          "profile": {
+                            "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                            "fullname": "Johanes Alexandra",
+                            "profile_image": {
+                              "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                              "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                            }
+                          }
+                        },
+                        "likesCount": 0,
+                        "parent_id": "comment-c7b1d717-4579-4890-82bb-cac8eeb9d215"
+                      }
+                    ],
+                    "meta": {
+                      "currentPage": 1,
+                      "perPage": 10,
+                      "totalCurrentPage": 1,
+                      "totalPage": 1,
+                      "totalData": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postId}/like": {
+      "post": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for like post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Like post successfully",
+                    "data": {
+                      "id": "like-5a08b839-1cb9-4967-92c3-a54c0e07c07c",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf",
+                      "comment_id": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postId}/unlike": {
+      "delete": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for unlike post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Unlike post successfully",
+                    "data": {
+                      "id": "like-5a08b839-1cb9-4967-92c3-a54c0e07c07c",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": "post-439e65d6-629c-4594-9aae-8387ba4a3fbf",
+                      "comment_id": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postId}/likes": {
+      "get": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for get all user who liked post",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "search by username",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Who likes post fetched successfully",
+                    "data": [
+                      {
+                        "id": "user-c8164c32-9f66-4982-aeb9-7c0fdbc2add7",
+                        "username": "johanes",
+                        "profile": {
+                          "id": "profile-c24e7a1d-997b-4d5a-a539-026d56761903",
+                          "fullname": "Johanes Alexandra",
+                          "profile_image": {
+                            "id": "profile-image-798d02f7-4d9d-4374-83ca-f054d8fc1773",
+                            "file_url": "http://localhost:3000/profiles/files/file-1730907730863-7415028.jpg"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postId}/like/check": {
+      "get": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for get liked post checked",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postId",
+            "description": "Unique id from post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Like post check fetched successfully",
+                    "data": {
+                      "like": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{commentId}/like": {
+      "post": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for like comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Like comment successfully",
+                    "data": {
+                      "id": "like-5a08b839-1cb9-4967-92c3-a54c0e07c07c",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": null,
+                      "comment_id": "comment-c7b1d717-4579-4890-82bb-cac8eeb9d215"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{commentId}/unlike": {
+      "delete": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for unlike comment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Unlike comment successfully",
+                    "data": {
+                      "id": "like-5a08b839-1cb9-4967-92c3-a54c0e07c07c",
+                      "user_id": "user-59b3da99-1505-417c-a81a-6b684458dc6c",
+                      "post_id": null,
+                      "comment_id": "comment-c7b1d717-4579-4890-82bb-cac8eeb9d215"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments/{commentId}/like/check": {
+      "get": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Endpoint for get liked comment checked",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commentId",
+            "description": "Unique id from comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": "success",
+                    "message": "Like comment check fetched successfully",
+                    "data": {
+                      "like": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

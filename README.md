@@ -26,3 +26,5 @@ The mini social media including simple feature implemented like authentication, 
 
 ### 6. Running Project
 `yarn dev | npm run dev`
+
+### 7. Make swagger docs should be build
