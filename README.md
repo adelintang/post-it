@@ -25,16 +25,16 @@ yarn install | npm i
 ### 4. Create Database, schema on prisma, and migration database
 
 ### 5. How to Create database on Postgres (if you use postgres)
-- ```
+```
 CREATE DATABASE database_name;
 ```
-- ```
+```
 GRANT ALL ON DATABASE database_name TO user_name;
 ```
-- ```
+```
 ALTER DATABASE database_name OWNER TO user_name;
 ```
-- ```
+```
 GRANT CREATE ON DATABASE database_name TO user_name;
 ```
 
