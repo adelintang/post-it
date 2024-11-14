@@ -3,7 +3,7 @@ The mini social media including simple feature implemented like authentication, 
 
 **Tech Stack** : Express, Typescript, Prisma, PostgreSQL.
 
-## How to use this project
+## How to use this project.
 
 ### 1. Clone this repository
 `https://github.com/adelintang/post-it.git`
