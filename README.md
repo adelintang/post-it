@@ -1,5 +1,5 @@
 ## PostIt
-The mini social media including simple feature implemented like authentication, profile, follow unfollow, posting, comment and like
+The mini social media including simple feature implemented like authentication, profile, follow unfollow, posting, comment and like.
 
 **Tech Stack** : Express, Typescript, Prisma, PostgreSQL.
 
