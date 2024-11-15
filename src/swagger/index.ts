@@ -15,7 +15,7 @@ import {
 	likePath,
 } from './path'
 
-// const PORT = process.env.PORT ?? 3000
+const PORT = process.env.PORT ?? 3000
 const HOST = process.env.HOST ?? 'http://localhost'
 
 export const swaggerDocument: OpenAPIV3.Document = {
@@ -27,7 +27,7 @@ export const swaggerDocument: OpenAPIV3.Document = {
 	},
 	servers: [
 		{
-			url: HOST,
+			url: `${HOST}:${PORT}`,
 			description: 'Internal Server API',
 		},
 	],
